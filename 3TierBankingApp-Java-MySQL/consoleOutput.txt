@@ -1,0 +1,257 @@
+ibtisam@mint-dell:~/git/Agri2Ops/02.Projects/00.Build (LocalOps)/04-JavaBankingApp-MySQL-3Tier$ tree -a
+.
+├── consoleOutput.txt
+├── .gitignore
+├── .mvn
+│   └── wrapper
+│       └── maven-wrapper.properties
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+├── projectSnapshot.png
+├── README.md
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── com
+    │   │       └── example
+    │   │           └── bankapp
+    │   │               ├── BankappApplication.java
+    │   │               ├── config
+    │   │               │   └── SecurityConfig.java
+    │   │               ├── controller
+    │   │               │   └── BankController.java
+    │   │               ├── model
+    │   │               │   ├── Account.java
+    │   │               │   └── Transaction.java
+    │   │               ├── repository
+    │   │               │   ├── AccountRepository.java
+    │   │               │   └── TransactionRepository.java
+    │   │               └── service
+    │   │                   └── AccountService.java
+    │   └── resources
+    │       ├── application.properties
+    │       ├── static
+    │       │   └── mysql
+    │       │       └── SQLScript.txt
+    │       └── templates
+    │           ├── dashboard.html
+    │           ├── login.html
+    │           ├── register.html
+    │           └── transactions.html
+    └── test
+        └── java
+            └── com
+                └── example
+                    └── bankapp
+                        └── BankappApplicationTests.java
+
+23 directories, 23 files
+
+-------------------------------------------------------------------------------------
+ibtisam@lubuntu:~$ sudo apt update; sudo apt install mysql-server
+ibtisam@lubuntu:~$ sudo mysql -u root
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.40-0ubuntu0.24.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Test@123';
+Query OK, 0 rows affected (2.02 sec)
+
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Test@123';
+Query OK, 0 rows affected (0.32 sec)
+
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'IbtisamOps'
+	-> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'IbtisamOps';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'IbtisamO' at line 2
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'IbtisamOps';
+Query OK, 0 rows affected (1.07 sec)
+
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.23 sec)
+
+mysql> exit
+Bye
+ibtisam@lubuntu:~$
+
+ibtisam@lubuntu:~$ mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.40-0ubuntu0.24.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE DATABASE bankappdb;
+Query OK, 1 row affected (0.90 sec)
+
+mysql> show databases;
++--------------------+
+| Database       	|
++--------------------+
+| bankappdb      	|
+| information_schema |
+| mysql          	|
+| performance_schema |
+| sys            	|
++--------------------+
+5 rows in set (0.22 sec)
+
+mysql> USE bankappdb;
+Database changed
+mysql> show tables;
+Empty set (0.01 sec)
+
+mysql> CREATE DATABASE test_db;
+Query OK, 1 row affected (1.81 sec)
+
+mysql> show databases;
++--------------------+
+| Database       	|
++--------------------+
+| bankappdb      	|
+| information_schema |
+| mysql          	|
+| performance_schema |
+| sys            	|
+| test_db        	|
++--------------------+
+6 rows in set (0.39 sec)
+
+mysql>
+
+ibtisam@lubuntu:~/SilverOps/03. Projects/00. LocalOps/0.1.04-jar_Multi Tier & MySQL Project$ ls -a
+.  ..  .gitignore  .mvn  mvnw  mvnw.cmd  pom.xml  src
+ibtisam@lubuntu:~/SilverOps/03. Projects/00. LocalOps/0.1.04-jar_Multi Tier & MySQL Project$ sudo netstat -tuln | grep 3306
+tcp    	0  	0 127.0.0.1:33060     	0.0.0.0:*           	LISTEN	 
+tcp    	0  	0 127.0.0.1:3306      	0.0.0.0:*           	LISTEN	 
+ibtisam@lubuntu:~/SilverOps/03. Projects/00. LocalOps/0.1.04-jar_Multi Tier & MySQL Project$ mvn package
+[INFO] Scanning for projects...
+[INFO] Replacing main artifact /home/ibtisam/SilverOps/03. Projects/00. LocalOps/0.1.04-jar_Multi Tier & MySQL Project/target/bankapp-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /home/ibtisam/SilverOps/03. Projects/00. LocalOps/0.1.04-jar_Multi Tier & MySQL Project/target/bankapp-0.0.1-SNAPSHOT.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  34.876 s
+[INFO] Finished at: 2024-12-11T22:32:46+05:00
+[INFO] ------------------------------------------------------------------------
+ibtisam@lubuntu:~/SilverOps/03. Projects/00. LocalOps/0.1.04-jar_Multi Tier & MySQL Project$
+ibtisam@lubuntu:~/SilverOps/03. Projects/00. LocalOps/0.1.04-jar_Multi Tier & MySQL Project$ cd target/
+ibtisam@lubuntu:~/SilverOps/03. Projects/00. LocalOps/0.1.04-jar_Multi Tier & MySQL Project/target$ java -jar bankapp-0.0.1-SNAPSHOT.jar
+
+
+
+ibtisam@lubuntu:~$ mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 18
+Server version: 8.0.40-0ubuntu0.24.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database       	|
++--------------------+
+| bankappdb      	|
+| information_schema |
+| mysql          	|
+| performance_schema |
+| sys            	|
+| test_db        	|
++--------------------+
+6 rows in set (0.81 sec)
+
+mysql> USE bankappdb
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables
+	-> show tables;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show tables' at line 2
+mysql> show tables;
++---------------------+
+| Tables_in_bankappdb |
++---------------------+
+| account         	|
+| transaction     	|
++---------------------+
+2 rows in set (0.03 sec)
+
+mysql> select * from account
+	-> select * from account;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select * from account' at line 2
+mysql> select * from account;
++----+---------+--------------------------------------------------------------+----------+
+| id | balance | password                                                 	| username |
++----+---------+--------------------------------------------------------------+----------+
+|  1 | 4500.00 | $2a$10$Oey61Cc.nb35BhdIyD49wuI0IULZMML8Rzhh9hpSQ9gYkt2dmsx.a | ibtisam  |
++----+---------+--------------------------------------------------------------+----------+
+1 row in set (0.01 sec)
+
+mysql> select * from transaction;
++----+---------+----------------------------+---------+------------+
+| id | amount  | timestamp              	| type	| account_id |
++----+---------+----------------------------+---------+------------+
+|  1 | 4500.00 | 2024-12-11 17:47:48.025990 | Deposit |      	1 |
++----+---------+----------------------------+---------+------------+
+1 row in set (0.01 sec)
+
+mysql>
+
+mysql> CREATE USER 'ibtisam'@'%' IDENTIFIED BY 'ib.ti.sam';
+Query OK, 0 rows affected (6.01 sec)
+
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'ibtisam'@'%';
+Query OK, 0 rows affected (2.46 sec)
+
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.45 sec)
+
+mysql> exit
+Bye
+
+ibtisam@lubuntu:~$ mysql -u ibtisam -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 21
+Server version: 8.0.40-0ubuntu0.24.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database       	|
++--------------------+
+| bankappdb      	|
+| information_schema |
+| mysql          	|
+| performance_schema |
+| sys            	|
+| test_db        	|
++--------------------+
+6 rows in set (0.23 sec)
+
+mysql>
+
