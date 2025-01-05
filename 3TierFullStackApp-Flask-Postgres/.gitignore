@@ -1,0 +1,18 @@
+# Byte-compiled / cached Python files
+__pycache__/
+*.pyc
+
+# Virtual environment
+IbtisamOps/
+
+# Environment variables and secrets (optional but recommended)
+.env
+*.env
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+

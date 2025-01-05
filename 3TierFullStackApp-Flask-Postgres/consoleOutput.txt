@@ -1,0 +1,173 @@
+ibtisam@mint-dell:~/git/Agri2Ops/03.Projects/00.Build (LocalOps)/09-PostgresFlask3TierApp$ tree -a
+.
+├── app
+│   ├── __init__.py
+│   ├── models.py
+│   ├── routes.py
+│   ├── static
+│   │   └── css
+│   │       └── style.css
+│   └── templates
+│       ├── create.html
+│       ├── delete.html
+│       ├── edit.html
+│       ├── index.html
+│       ├── layout.html
+│       ├── update.html
+│       └── view.html
+├── config.py
+├── .gitignore
+├── project-structure.txt
+├── README.md
+├── requirements.txt
+└── run.py
+
+5 directories, 17 files
+
+Your project structure looks organized and typical for a Python multi-tier application, possibly a Flask app. Here's a quick breakdown of what each part might represent:
+
+    app/: This is where your main application logic resides.
+        __init__.py: Initializes the application and makes the app directory a Python package.
+        models.py: Defines the data models (likely for interaction with a PostgreSQL database).
+        routes.py: Contains the URL routes and logic for handling requests and responses.
+        static/: Stores static files like CSS, JavaScript, and images.
+            css/style.css: The styles for your app.
+        templates/: Contains HTML files used for rendering the UI in response to requests.
+            The HTML files include common operations like creating, updating, deleting, and viewing data.
+
+    config.py: Configuration file for the app, possibly holding database connection info or other settings.
+
+    .gitignore: Specifies which files and directories Git should ignore.
+
+    README.md: Provides documentation for the project, explaining its functionality and usage.
+
+    requirements.txt: Lists the Python dependencies required for the project.
+
+    run.py: The script that runs your application, likely initializes the Flask app.
+
+With this structure, you're setting up a good foundation for a multi-tier app, integrating both frontend and backend elements. If you're working with PostgreSQL, the models.py file will likely need to define your database schema and how to interact with it.
+
+---
+
+The __init__.py file is not strictly mandatory for running the project itself, but it plays a crucial role in Python packages and application organization. Here's why it's important:
+
+    Package Initialization: It tells Python that the directory (in this case, app/) should be treated as a package. Without it, Python wouldn't recognize the app directory as a module, and you may encounter import errors.
+
+    App Setup: In a Flask project, the __init__.py file often contains the application setup code, such as creating the Flask app instance, initializing extensions (e.g., database, login manager), and configuring the app.
+
+If you're not using it for setup and just want to treat app as a directory for code, the project might still run. However, it's good practice to include it and use it for initializing your app and its components.
+
+If you're missing __init__.py, you might face issues when trying to import from the app module, depending on how you structure the app.
+
+--------------------------------------------------------------------------------
+
+ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.09-py_Multi-Tier-App-Postgres$ ls
+app  config.py  README.md  requirements.txt  run.py
+ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.09-py_Multi-Tier-App-Postgres$ cat config.py
+import os
+
+class Config:
+	SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+    	'postgresql://root:root@localhost/my_database'
+	SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.09-py_Multi-Tier-App-Postgres$ sudo apt install python3.12-venv -y
+Reading package lists... Done
+ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.09-py_Multi-Tier-App-Postgres$ python3 -m venv IbtisamOps
+ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.09-py_Multi-Tier-App-Postgres$ source IbtisamOps/bin/activate
+(IbtisamOps) ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.09-py_Multi-Tier-App-Postgres$ ls
+app  config.py  IbtisamOps  README.md  requirements.txt  run.py
+(IbtisamOps) ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.09-py_Multi-Tier-App-Postgres$ pip3 install -r requirements.txt
+Collecting blinker==1.8.2 (from -r requirements.txt (line 1))
+Installing collected packages: typing_extensions, psycopg2-binary, MarkupSafe, itsdangerous, greenlet, click, blinker, Werkzeug, SQLAlchemy, Jinja2, Flask, Flask-SQLAlchemy
+Successfully installed Flask-3.0.3 Flask-SQLAlchemy-3.1.1 Jinja2-3.1.4 MarkupSafe-2.1.5 SQLAlchemy-2.0.32 Werkzeug-3.0.3 blinker-1.8.2 click-8.1.7 greenlet-3.0.3 itsdangerous-2.2.0 psycopg2-binary-2.9.9 typing_extensions-4.12.2
+(IbtisamOps) ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.09-py_Multi-Tier-App-Postgres$ ls
+app  config.py  IbtisamOps  README.md  requirements.txt  run.py
+(IbtisamOps) ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.09-py_Multi-Tier-App-Postgres$
+
+ibtisam@lubuntu:~$ sudo apt-get install postgresql postgresql-contrib
+Reading package lists... Done
+update-alternatives: using /usr/share/postgresql/16/man/man1/psql.1.gz to provide /usr/share/man/man1/psql.1.gz (psql.1.gz) in auto mode
+Setting up postgresql-common (257build1.1) ...
+
+Creating config file /etc/postgresql-common/createcluster.conf with new version
+Building PostgreSQL dictionaries from installed myspell/hunspell packages...
+  en_us
+Removing obsolete dictionary files:
+Created symlink /etc/systemd/system/multi-user.target.wants/postgresql.service → /usr/lib/systemd/system/postgresql.service.
+Setting up postgresql-16 (16.6-0ubuntu0.24.04.1) ...
+Creating new PostgreSQL cluster 16/main ...
+/usr/lib/postgresql/16/bin/initdb -D /var/lib/postgresql/16/main --auth-local peer --auth-host scram-sha-256 --no-instructions
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with this locale configuration:
+  provider:	libc
+  LC_COLLATE:  en_US.UTF-8
+  LC_CTYPE:	en_US.UTF-8
+  LC_MESSAGES: en_US.UTF-8
+  LC_MONETARY: ur_PK
+  LC_NUMERIC:  ur_PK
+  LC_TIME: 	ur_PK
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/postgresql/16/main ... ok
+creating subdirectories ... ok
+selecting dynamic shared memory implementation ... posix
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting default time zone ... Asia/Karachi
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+Setting up postgresql-contrib (16+257build1.1) ...
+Setting up postgresql (16+257build1.1) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.3) …
+
+ibtisam@lubuntu:~$ sudo systemctl start postgresql
+
+ibtisam@lubuntu:~$ sudo -u postgres psql
+psql (16.6 (Ubuntu 16.6-0ubuntu0.24.04.1))
+Type "help" for help.
+
+postgres=# CREATE USER root WITH PASSWORD 'root';
+CREATE ROLE
+postgres=# CREATE DATABASE my_database;
+CREATE DATABASE
+postgres=# GRANT ALL PRIVILEGES ON DATABASE my_database TO root;
+GRANT
+postgres=# \c my_database
+You are now connected to database "my_database" as user "postgres".
+my_database=# GRANT ALL PRIVILEGES ON SCHEMA public TO root;
+GRANT
+my_database=# GRANT CREATE ON DATABASE my_database TO root;
+GRANT
+my_database=#
+
+(IbtisamOps) ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.09-py_Multi-Tier-App-Postgres$ ls
+app  config.py  IbtisamOps  README.md  requirements.txt  run.py
+(IbtisamOps) ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.09-py_Multi-Tier-App-Postgres$ python run.py
+ * Serving Flask app 'app'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.16:5000
+Press CTRL+C to quit
+127.0.0.1 - - [13/Dec/2024 00:46:50] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [13/Dec/2024 00:47:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [13/Dec/2024 00:47:02] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [13/Dec/2024 00:47:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [13/Dec/2024 00:47:09] "GET /create HTTP/1.1" 200 -
+127.0.0.1 - - [13/Dec/2024 00:47:28] "POST /create HTTP/1.1" 302 -
+127.0.0.1 - - [13/Dec/2024 00:47:28] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [13/Dec/2024 00:47:32] "GET / HTTP/1.1" 200 -
+^C(IbtisamOps) ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.09-py_Multi-Tier-App-Postgres$ ls
+app  config.py  IbtisamOps  README.md  requirements.txt  run.py
+(IbtisamOps) ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.09-py_Multi-Tier-App-Postgres$ deactivate
+ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.09-py_Multi-Tier-App-Postgres$
