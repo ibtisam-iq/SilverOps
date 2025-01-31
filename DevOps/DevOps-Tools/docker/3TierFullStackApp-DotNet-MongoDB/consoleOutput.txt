@@ -1,0 +1,367 @@
+ibtisam@mint-dell:~/git/Agri2Ops/03.Projects/00.Build (LocalOps)/10-DotNetMongo3TierApp$ tree -a
+.
+├── appsettings.Development.json
+├── appsettings.json
+├── Controllers
+│   ├── HomeController.cs
+│   └── ProductController.cs
+├── DotNetMongoCRUDApp.csproj
+├── Models
+│   ├── ErrorViewModel.cs
+│   ├── IMongoDBSettings.cs
+│   ├── MongoDBSettings.cs
+│   └── Product.cs
+├── Program.cs
+├── project-structure.txt
+├── Properties
+│   └── launchSettings.json
+├── README.md
+├── Services
+│   └── ProductService.cs
+├── Startup.cs
+├── Views
+│   ├── Home
+│   │   ├── Index.cshtml
+│   │   └── Privacy.cshtml
+│   ├── Product
+│   │   ├── Create.cshtml
+│   │   ├── Delete.cshtml
+│   │   ├── Details.cshtml
+│   │   ├── Edit.cshtml
+│   │   └── Index.cshtml
+│   ├── Shared
+│   │   ├── Error.cshtml
+│   │   ├── _HomeLayout.cshtml
+│   │   ├── _Layout.cshtml
+│   │   ├── _Layout.cshtml.css
+│   │   └── _ValidationScriptsPartial.cshtml
+│   ├── _ViewImports.cshtml
+│   └── _ViewStart.cshtml
+└── wwwroot
+    ├── css
+    │   └── site.css
+    ├── favicon.ico
+    └── js
+        └── site.js
+
+12 directories, 32 files
+
+---
+
+Here is a detailed description of each folder and file in the provided .NET project structure:
+1. appsettings.Development.json
+
+    Purpose: This file contains configuration settings for the application when running in the development environment. It typically includes development-specific settings such as connection strings, API keys, or other environment-dependent configurations.
+
+2. appsettings.json
+
+    Purpose: This is the main configuration file for the application. It includes common settings used across different environments (development, staging, production). It may contain settings like connection strings, logging settings, and application-specific configurations.
+
+3. Controllers
+
+    Purpose: Contains controller classes, which are responsible for handling HTTP requests and returning HTTP responses (views, data, etc.) to the user. In this case, two controllers are defined:
+
+    HomeController.cs: Handles requests related to the home page and general site navigation.
+
+    ProductController.cs: Handles CRUD (Create, Read, Update, Delete) operations related to products, connecting user requests to product data.
+
+4. DotNetMongoCRUDApp.csproj
+
+    Purpose: This is the project file for the .NET application. It contains metadata and references to external libraries, such as MongoDB packages. It defines how the project should be built and what dependencies are required.
+
+5. Models
+
+    Purpose: This folder contains the data models used by the application. Models represent the data structure, and they are used to interact with the database and pass data between the controller and view.
+
+    ErrorViewModel.cs: A model for representing error data that may be passed to the view, typically when something goes wrong in the application.
+
+    IMongoDBSettings.cs: An interface defining the settings for MongoDB, such as the connection string, database name, and other MongoDB-specific configurations.
+
+    MongoDBSettings.cs: This is the implementation of the IMongoDBSettings interface. It defines how MongoDB settings are retrieved and used in the application.
+
+    Product.cs: Represents the Product model. This file defines the properties of the Product object, which is likely stored in MongoDB and used for CRUD operations.
+
+6. Program.cs
+
+    Purpose: This is the entry point of the .NET application. It typically sets up services, middleware, and the application configuration. It’s the main method used to run the application.
+
+7. Properties
+
+    Purpose: Contains project-related configuration files like launchSettings.json.
+
+    launchSettings.json: This file defines how the application should be launched in different environments. It includes settings such as the URL to listen on, environment variables, and debugging configurations.
+
+8. README.md
+
+    Purpose: A markdown file providing information about the project, including setup instructions, features, and how to run the application. It is a helpful file for developers and users working with the project.
+
+9. Services
+
+    Purpose: Contains service classes that encapsulate business logic and interact with the data models. In this case:
+
+    ProductService.cs: Contains the business logic for performing CRUD operations related to products, including interacting with the MongoDB database.
+
+10. Startup.cs
+
+    Purpose: Configures services and middleware for the application. It’s used to define how the application should handle requests, services like dependency injection, and middleware components for things like authentication, routing, and error handling.
+
+11. Views
+
+    Purpose: Contains Razor view files (.cshtml), which are used to generate HTML content dynamically. These views are returned to the client as responses.
+
+    Home:
+        Index.cshtml: The view for the homepage, typically showing an overview or introductory page.
+        Privacy.cshtml: A view that displays the privacy policy or related information.
+
+    Product:
+        Create.cshtml: The view used to display the form for creating a new product.
+        Delete.cshtml: The view for confirming the deletion of a product.
+        Details.cshtml: The view for displaying detailed information about a product.
+        Edit.cshtml: The view for editing an existing product.
+        Index.cshtml: A list view displaying all products or key product information.
+
+    Shared:
+        Error.cshtml: A view for displaying error messages when something goes wrong.
+        _HomeLayout.cshtml: A layout file specifically for the home page.
+        _Layout.cshtml: A common layout file used across the views. It typically contains the HTML structure (header, footer, etc.) and includes references to CSS, JS, and other shared elements.
+        _Layout.cshtml.css: A CSS file used to style the layout.
+        _ValidationScriptsPartial.cshtml: A partial view for including validation scripts (e.g., for form validation).
+
+    _ViewImports.cshtml: Used to import namespaces, tag helpers, or shared functionality that can be used across all views in the project.
+
+    _ViewStart.cshtml: Specifies the layout to be used by default for views in the project.
+
+12. wwwroot
+
+    Purpose: This is the web root directory, where static files (such as CSS, JavaScript, images, etc.) are served from.
+
+    css:
+        site.css: The main CSS file used to style the application.
+
+    favicon.ico: The website’s favicon (icon displayed in the browser tab).
+
+    js:
+        site.js: The main JavaScript file used to add interactive features to the application.
+
+Automatically Created Folders/Files After Build
+
+    After building the project, .NET may create additional folders like:
+        bin/: Contains compiled files (DLLs, EXEs) from the build process.
+        obj/: Contains intermediate files used during the build process.
+
+These folders are not included in source control (e.g., Git) because they are considered temporary build outputs and will be regenerated as needed.
+
+---
+
+Based on the provided structure, this project is a 3-tier application.
+
+Here’s why:
+
+    Presentation Layer (UI): This is the Views folder, where Razor views are used to display the user interface (e.g., Index.cshtml, Create.cshtml, Delete.cshtml).
+    Business Logic Layer: This is represented by the Services folder, specifically the ProductService.cs, where business logic (CRUD operations) is handled.
+    Data Access Layer: This is the Models folder, which interacts with MongoDB (e.g., Product.cs, MongoDBSettings.cs), and it handles the interaction with the database.
+
+In a 3-tier architecture, these three layers are typically separated to improve maintainability and scalability.
+
+----------------------------------------------------------------------------
+
+ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.10_Tier-DotNET-MongoDB-main$ tree
+.
+├── appsettings.Development.json
+├── appsettings.json
+├── Controllers
+│   ├── HomeController.cs
+│   └── ProductController.cs
+├── DotNetMongoCRUDApp.csproj
+├── Models
+│   ├── ErrorViewModel.cs
+│   ├── IMongoDBSettings.cs
+│   ├── MongoDBSettings.cs
+│   └── Product.cs
+├── Program.cs
+├── Properties
+│   └── launchSettings.json
+├── README.md
+├── Services
+│   └── ProductService.cs
+├── Startup.cs
+├── Views
+│   ├── Home
+│   │   ├── Index.cshtml
+│   │   └── Privacy.cshtml
+│   ├── Product
+│   │   ├── Create.cshtml
+│   │   ├── Delete.cshtml
+│   │   ├── Details.cshtml
+│   │   ├── Edit.cshtml
+│   │   └── Index.cshtml
+│   ├── Shared
+│   │   ├── Error.cshtml
+│   │   ├── _HomeLayout.cshtml
+│   │   ├── _Layout.cshtml
+│   │   ├── _Layout.cshtml.css
+│   │   └── _ValidationScriptsPartial.cshtml
+│   ├── _ViewImports.cshtml
+│   └── _ViewStart.cshtml
+└── wwwroot
+	├── css
+	│   └── site.css
+	├── favicon.ico
+	└── js
+    	└── site.js
+
+12 directories, 31 files
+ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.10_Tier-DotNET-MongoDB-main$ sudo apt-get install -y dotnet-sdk-8.0
+Reading package lists... Done
+
+ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.10_Tier-DotNET-MongoDB-main$ sudo apt-get install -y aspnetcore-runtime-8.0
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+aspnetcore-runtime-8.0 is already the newest version (8.0.11-0ubuntu1~24.04.1).
+aspnetcore-runtime-8.0 set to manually installed.
+0 upgraded, 0 newly installed, 0 to remove and 93 not upgraded.
+ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.10_Tier-DotNET-MongoDB-main$ curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | \
+sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \
+--dearmor
+ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.10_Tier-DotNET-MongoDB-main$ echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse
+ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.10_Tier-DotNET-MongoDB-main$ sudo apt update; sudo apt install -y mongodb-org
+Hit:1 https://download.docker.com/linux/ubuntu noble InRelease                                                                                                    	 
+Processing triggers for man-db (2.12.0-4build2) ...
+
+ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.10_Tier-DotNET-MongoDB-main$ sudo systemctl start mongod
+ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.10_Tier-DotNET-MongoDB-main$ wget -qO- https://www.mongodb.org/static/pgp/server-8.0.asc | sudo tee /etc/apt/trusted.gpg.d/server-8.0.asc
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mQINBGWgEhwBEADJpjwR+5n6na3tqZ6ueHsW/U8lvcvMFZ1DYNo+/JhrNjHkZ7HR
+Wbc2IzWej1zqTtctSKZvrCkPGZxiDsKB5xta/NVtnpjSuV02Gp0F6hf0gnvark04
+HnEFaV2w15Tyr8Z4KHRDbdja6h/24t4tR0KkRzxh5U7FwLL8BpK2drbTog9FBMy+
+lqYDfOLHx6JDeOMC7eSNe/jJsAiuVcP/y+vQbLuMYAaMPSvJoidRIQ88oFLoUlVZ
+NxRt3Z+7w5HMIN2laKp+ItxloPWGBdcHU4o2ZnWgsVT8Y/a+RED75DDbAQ6lS3fV
+sSlmQLExcf75qOPy34XNv3gWP4tbfIXXt8olflF8hwHggmKZzEImnzEozPabDsN7
+nkhHZEWhGcPRcuHbFOqcirV1sfsKK1gOsTbxS00iD3OivOFCQqujF196cal/utTd
+WvyJvY2o35eE0WFcDdstU7UiP39usE+jk4jbQS5WbMYk9yyZCCbd74T7eYAfSEXg
+GqrE1O6pjMmwbEjHwHDkbn/2WGvOSgWKHJVSh8V1K5ijlAd/9SCbsY0Yh5K3G16k
+gnzHZ7OuQItfvMlPLQA7P2cPj/bGkO2ayyZU4+9rCsXlHw4Cee+u1APFSO2rj1TE
+vX80grtqXNmj6nV21nIiXASvBKRO3kU4t8yV9i8EEREKYx/gLIl5i3PYGwARAQAB
+tDdNb25nb0RCIDguMCBSZWxlYXNlIFNpZ25pbmcgS2V5IDxwYWNrYWdpbmdAbW9u
+Z29kYi5jb20+iQJOBBMBCgA4FiEESwdSwbyiOMC07hTcQd4Fik59ygUFAmWgEhwC
+GwMFCwkIBwIGFQoJCAsCBBYCAwECHgECF4AACgkQQd4Fik59ygWy4w//e+IQ5eFT
+rlowx196DaInUTiv+aMkkN5hAtJDMicV9+ZDChEfqqQH1WJuUUKfX00AeEDocQnI
+LgESy0+rp2FoRPG5bXaJXTv6xQkqIMQQMNMkG4Nx3AxggRVkzd2arOr9FBwcnmf0
+7xu9EsMJndmzTsDO+ohWnNb0ILSdPVKDafpfg4ycBWDZT7ynD6TT0JpG8WWJi8F+
+9GR4k4CpBujk49POZbjeVDOuP/o/tosmEO9jo03C/u1qNuVVXy6vvTB6WjO79QTX
+OlSTLHAiu9N/VknG1B7lW15X1yl3jl3vZ33N68ncXUW2gAJi7Nh6H6RSm288IC4i
+hSmSBFabffQtwOTVE0CaKge2nU4Oc3Tp2h8moEgi81vYT/CioMt6wmHTzY0grcfF
+WLwtDMFJ0VQYRrUIOMmYBFyRp2jdRYYkA+vlL+6DNAAjCeuvwCs3PqUhgFvHNxVv
+bumKiRMIOoNUwpLEKsEq8jBs+U+gUfa+CmBn67G9mjDRu4cXXrtItooxnbfM/m0i
+hVnssTC1arrx273zFepLosPvgrT0TS7tnyXbzuq5mo0zD1fSj4kuSS9V/SSy9fWF
+LAtHiNQJkjzGFxu0/9dyQyX6C523uvfdcOzpObTyjBeGKqmEEf0lF5OYLDlkk2Sm
+iGa6i2oLaGzGaQZDpdqyQZiYpQEYw9xN+8g=
+=J31U
+-----END PGP PUBLIC KEY BLOCK-----
+ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.10_Tier-DotNET-MongoDB-main$ cat /etc/os-release
+PRETTY_NAME="Ubuntu 24.04.1 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+VERSION="24.04.1 LTS (Noble Numbat)"
+VERSION_CODENAME=noble
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=noble
+LOGO=ubuntu-logo
+ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.10_Tier-DotNET-MongoDB-main$ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/8.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list
+deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/8.0 multiverse
+ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.10_Tier-DotNET-MongoDB-main$ sudo apt-get update
+Hit:1 http://archive.ubuntu.com/ubuntu noble InRelease
+Reading package lists... Done
+
+ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.10_Tier-DotNET-MongoDB-main$ sudo apt-get install -y mongodb-mongosh
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+mongodb-mongosh is already the newest version (2.3.5).
+mongodb-mongosh set to manually installed.
+0 upgraded, 0 newly installed, 0 to remove and 122 not upgraded.
+ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.10_Tier-DotNET-MongoDB-main$ mongosh --version
+2.3.5
+ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.10_Tier-DotNET-MongoDB-main$ sudo systemctl status mongod
+● mongod.service - MongoDB Database Server
+ 	Loaded: loaded (/usr/lib/systemd/system/mongod.service; disabled; preset: enabled)
+ 	Active: active (running) since Fri 2024-12-13 03:16:57 PKT; 8min ago
+   	Docs: https://docs.mongodb.org/manual
+   Main PID: 11411 (mongod)
+ 	Memory: 100.6M (peak: 140.8M)
+    	CPU: 5.378s
+ 	CGroup: /system.slice/mongod.service
+         	└─11411 /usr/bin/mongod --config /etc/mongod.conf
+
+دسمبر 13 03:16:57 lubuntu systemd[1]: Started mongod.service - MongoDB Database Server.
+دسمبر 13 03:17:02 lubuntu mongod[11411]: {"t":{"$date":"2024-12-12T22:17:02.924Z"},"s":"I",  "c":"CONTROL",  "id":7484500, "ctx":"main","msg":"Environment variable MONG>
+lines 1-12/12 (END)
+ibtisam@lubuntu:~/SilverOps/03.Projects/00.LocalOps/0.1.10_Tier-DotNET-MongoDB-main$ sudo netstat -tulnp | grep 27017
+tcp    	0  	0 127.0.0.1:27017     	0.0.0.0:*           	LISTEN  	11411/mongod   	 
+
+ibtisam@lubuntu:~$ mongosh
+Current Mongosh Log ID:	675b62822533aafc9e75ab3b
+Connecting to:    	mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.5
+MongoServerSelectionError: Server selection timed out after 2000 ms
+ibtisam@lubuntu:~$ mongosh
+Current Mongosh Log ID:	675b63047cd457ea2275ab3b
+Connecting to:    	mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.5
+MongoServerSelectionError: Server selection timed out after 2000 ms
+ibtisam@lubuntu:~$ sudo vi /etc/mongod.conf
+ibtisam@lubuntu:~$ sudo cat /etc/mongod.conf
+# mongod.conf
+
+# for documentation of all options, see:
+#   http://docs.mongodb.org/manual/reference/configuration-options/
+
+# Where and how to store data.
+storage:
+  dbPath: /var/lib/mongodb
+#  engine:
+#  wiredTiger:
+
+# where to write logging data.
+systemLog:
+  destination: file
+  logAppend: true
+  path: /var/log/mongodb/mongod.log
+
+# network interfaces
+net:
+  port: 27017
+  bindIp: 127.0.0.1
+
+
+# how the process runs
+processManagement:
+  timeZoneInfo: /usr/share/zoneinfo
+
+#security:
+
+#operationProfiling:
+
+#replication:
+
+#sharding:
+
+## Enterprise-Only Options:
+
+#auditLog:
+ibtisam@lubuntu:~$ telnet 127.0.0.1 27017
+Trying 127.0.0.1...
+Connected to 127.0.0.1.
+Escape character is '^]'.
+Connection closed by foreign host.
+ibtisam@lubuntu:~$ mongosh
+Current Mongosh Log ID:	675b6807d6e9a9fcf475ab3b
+Connecting to:    	mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.5
+MongoServerSelectionError: Server selection timed out after 2000 ms
+ibtisam@lubuntu:~$
