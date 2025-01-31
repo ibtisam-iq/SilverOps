@@ -5,6 +5,7 @@
 
 ## 1. Introduction
 **SilverOps** is a curated collection of projects demonstrating **DevOps** and **AIOps** implementations. It aims to:
+
 - Exhibit technical proficiency in automation, cloud computing, and AI-integrated operations.
 - Provide a structured platform for project exploration and knowledge dissemination.
 - Serve as a professional portfolio for employers, collaborators, and researchers in DevOps and AI.
@@ -14,6 +15,7 @@ The repository is divided into two main domains:
 
 ### 2.1 DevOps
 Projects facilitating automation, CI/CD pipelines:
+
    - **FullStack Systems**: End-to-end deployment of multi-tier projects, emphasizing DevOps practices and automation.
    - **Tool-Specific Implementations**: Projects categorized based on industry-standard tools such as **Jenkins, Docker, Kubernetes, Terraform**, and other infrastructure automation frameworks.
 
@@ -21,7 +23,8 @@ Projects facilitating automation, CI/CD pipelines:
 Future research and implementation of **AI-powered automation**, focusing on predictive analytics, anomaly detection, and intelligent system monitoring.
 
 ## 3. Related Research: The Nectar Repository
-Parallel to **SilverOps**, the **Nectar** repository is dedicated to **theoretical and empirical documentation**, including:
+Parallel to **SilverOps**, I also maintain the [**Nectar**](https://github.com/ibtisamops/nectar) repository which is dedicated to **theoretical and empirical documentation**, including:
+
 - **Comprehensive DevOps documentation** outlining best practices.
 - **Cheat sheets, guides, and in-depth tool analysis**.
 - **A resource for continuous learning in automation, cloud technologies, and system orchestration**.
