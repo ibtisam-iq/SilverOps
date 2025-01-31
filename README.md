@@ -2,12 +2,14 @@
 
 **SilverOps** is a curated portfolio repository that showcases my expertise in **DevOps** and **AI-driven automation**. The name "SilverOps" is inspired by my achievement as a **Silver Medalist**, reflecting my commitment to excellence and continuous learning in the field of technology.
 
+---
 ## 🎯 Purpose
 SilverOps serves as a structured collection of projects that highlight my hands-on experience and technical skill set. This repository is designed to:
 - Demonstrate **proficiency in DevOps and AI-powered automation**.
 - Organize projects into well-defined categories for easy navigation.
 - Act as a portfolio for potential employers, collaborators, and the DevOps community.
 
+---
 ## 📂 Repository Structure
 SilverOps is systematically divided into two primary sections:
 
@@ -19,6 +21,7 @@ SilverOps is systematically divided into two primary sections:
 ### 🤖 2. AI (Future Expansion)
    - A dedicated section for **AI-driven operations (AIOps)**, predictive analytics, and intelligent automation.
 
+---
 ## 🔗 Related Repository: Nectar
 To complement SilverOps, I also maintain **Nectar**, a dedicated knowledge repository that focuses on:
 
@@ -28,6 +31,7 @@ To complement SilverOps, I also maintain **Nectar**, a dedicated knowledge repos
 
 While **SilverOps** is focused on **practical implementations and real-world projects**, **Nectar** serves as a **comprehensive reference guide** to deepen technical knowledge.
 
+---
 ## 📬 Get in Touch
 For collaboration opportunities, inquiries, or discussions on DevOps and AI, feel free to reach out:
 
