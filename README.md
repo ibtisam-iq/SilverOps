@@ -23,7 +23,7 @@ SilverOps is systematically divided into two primary sections:
 
 ---
 ## 🔗 Related Repository: Nectar
-To complement SilverOps, I also maintain **Nectar**, a dedicated knowledge repository that focuses on:
+To complement SilverOps, I also maintain [**Nectar**](https://github.com/ibtisamops/nectar), a dedicated knowledge repository that focuses on:
 
 - **In-depth DevOps documentation** and best practices.
 - **Cheat sheets, guides, and tool-specific insights**.
