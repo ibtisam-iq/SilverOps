@@ -12,6 +12,11 @@ End-to-end deployment examples of multi-tier applications, showcasing the full s
 - **CI/CD pipelines**
 - **Automated testing**
 - **Deployment to cloud or containerized environments**
+- **Monitoring and logging**
+- **Security and compliance**
+- **Scalability and performance optimization**
+- **Backup and disaster recovery**
+
 
 ### 2. **Tool-Specific Implementations**
 Projects using various **DevOps tools** to automate infrastructure and application management. These include:
