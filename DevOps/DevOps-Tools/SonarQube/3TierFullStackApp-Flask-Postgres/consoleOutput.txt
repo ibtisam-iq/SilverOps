@@ -1,0 +1,92 @@
+ibtisam@mint-dell:/media/ibtisam/L-Mint/git/Agri2Ops/SonarQube/PostgresFlask3TierApp$ tree -a
+.
+├── app
+│   ├── __init__.py
+│   ├── models.py
+│   ├── routes.py
+│   ├── static
+│   │   └── css
+│   │       └── style.css
+│   └── templates
+│       ├── create.html
+│       ├── delete.html
+│       ├── edit.html
+│       ├── index.html
+│       ├── layout.html
+│       ├── update.html
+│       └── view.html
+├── config.py
+├── .gitignore
+├── README.md
+├── requirements.txt
+├── run.py
+└── tests
+    ├── __init__.py
+    └── test_app.py
+
+6 directories, 20 files
+ibtisam@mint-dell:/media/ibtisam/L-Mint/git/Agri2Ops/SonarQube/PostgresFlask3TierApp$ python3 -m venv IbtisamOps
+ibtisam@mint-dell:/media/ibtisam/L-Mint/git/Agri2Ops/SonarQube/PostgresFlask3TierApp$ source IbtisamOps/bin/activate
+(IbtisamOps) ibtisam@mint-dell:/media/ibtisam/L-Mint/git/Agri2Ops/SonarQube/PostgresFlask3TierApp$ pip install -r requirements.txt
+
+Installing collected packages: typing_extensions, psycopg2-binary, MarkupSafe, itsdangerous, greenlet, click, blinker, Werkzeug, SQLAlchemy, Jinja2, Flask, Flask-SQLAlchemy
+Successfully installed Flask-3.0.3 Flask-SQLAlchemy-3.1.1 Jinja2-3.1.4 MarkupSafe-2.1.5 SQLAlchemy-2.0.32 Werkzeug-3.0.3 blinker-1.8.2 click-8.1.7 greenlet-3.0.3 itsdangerous-2.2.0 psycopg2-binary-2.9.9 typing_extensions-4.12.2
+(IbtisamOps) ibtisam@mint-dell:/media/ibtisam/L-Mint/git/Agri2Ops/SonarQube/PostgresFlask3TierApp$ pip3 install coverage; coverage run -m unittest discover; coverage report; coverage xml
+Collecting coverage
+  Using cached coverage-7.6.10-cp312-cp312-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (8.2 kB)
+Using cached coverage-7.6.10-cp312-cp312-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (240 kB)
+Installing collected packages: coverage
+Successfully installed coverage-7.6.10
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.058s
+
+OK
+Name                Stmts   Miss  Cover
+---------------------------------------
+app/__init__.py        12      9    25%
+app/models.py           8      0   100%
+tests/__init__.py       0      0   100%
+tests/test_app.py      26      1    96%
+---------------------------------------
+TOTAL                  46     10    78%
+Wrote XML report to coverage.xml
+(IbtisamOps) ibtisam@mint-dell:/media/ibtisam/L-Mint/git/Agri2Ops/SonarQube/PostgresFlask3TierApp$ deactivate
+ibtisam@mint-dell:/media/ibtisam/L-Mint/git/Agri2Ops/SonarQube/PostgresFlask3TierApp$ rm -rf IbtisamOps/
+ibtisam@mint-dell:/media/ibtisam/L-Mint/git/Agri2Ops/SonarQube/PostgresFlask3TierApp$ tree -a
+.
+├── app
+│   ├── __init__.py
+│   ├── models.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-312.pyc
+│   │   └── models.cpython-312.pyc
+│   ├── routes.py
+│   ├── static
+│   │   └── css
+│   │       └── style.css
+│   └── templates
+│       ├── create.html
+│       ├── delete.html
+│       ├── edit.html
+│       ├── index.html
+│       ├── layout.html
+│       ├── update.html
+│       └── view.html
+├── config.py
+├── .coverage
+├── coverage.xml
+├── .gitignore
+├── README.md
+├── requirements.txt
+├── run.py
+└── tests
+    ├── __init__.py
+    ├── __pycache__
+    │   ├── __init__.cpython-312.pyc
+    │   └── test_app.cpython-312.pyc
+    └── test_app.py
+
+8 directories, 26 files
+ibtisam@mint-dell:/media/ibtisam/L-Mint/git/Agri2Ops/SonarQube/PostgresFlask3TierApp$ 
+

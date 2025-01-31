@@ -1,0 +1,198 @@
+ibtisam@mint-dell:~/git/Agri2Ops/03.Projects/00.Build (LocalOps)/05-MavenTomcatWebApp$ ls -a
+.  ..  Banner.png  .gitignore  logo.png  pom.xml  README.md  src
+ibtisam@mint-dell:~/git/Agri2Ops/03.Projects/00.Build (LocalOps)/05-MavenTomcatWebApp$ tree -a
+.
+├── Banner.png
+├── .gitignore
+├── logo.png
+├── pom.xml
+├── README.md
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── com
+    │   │       └── example
+    │   │           ├── HelloWorldExample.java
+    │   │           └── Thing.java
+    │   └── webapp
+    │       ├── index.jsp
+    │       └── WEB-INF
+    │           └── web.xml
+    └── test
+        └── java
+            └── com
+                └── example
+                    └── ThingTest.java
+
+12 directories, 10 files
+
+It looks like you're working with a Maven-based Java project that includes both the application and its associated test code. Here's a brief overview of the structure:
+
+    Banner.png and logo.png: Likely images used in your web application (e.g., for branding or display).
+
+    .gitignore: Contains files and directories that should be excluded from Git version control.
+    
+    pom.xml: The Maven build configuration file that manages dependencies, plugins, and build goals.
+    
+    README.md: Documentation that typically describes the project, its purpose, and how to build or run it.
+    
+    src/main/java/com/example: The main application code, including:
+        HelloWorldExample.java: Likely contains a basic example of a "Hello World" program or functionality.
+        Thing.java: Another class in your project.
+    
+    src/main/webapp: The web layer of your application, containing:
+        index.jsp: The main JSP (Java Server Page) file, likely served when users access the web app.
+        WEB-INF/web.xml: The web application deployment descriptor for configuration.
+    
+    src/test/java/com/example: Contains test classes for unit testing.
+        ThingTest.java: A test file that likely contains unit tests for the Thing class.
+
+This project is structured for a basic web application with Java backend and JSP frontend, managed using Maven.
+
+--------------------------------------------------------------------------------
+
+ibtisam@lubuntu:~$ sudo cd /opt
+sudo: cd: command not found
+sudo: "cd" is a shell built-in command, it cannot be run directly.
+sudo: the -s option may be used to run a privileged shell.
+sudo: the -D option may be used to run a command in a specific directory.
+ibtisam@lubuntu:~$ cd opt
+-bash: cd: opt: No such file or directory
+ibtisam@lubuntu:~$ cd /opt
+ibtisam@lubuntu:/opt$ sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.98/bin/apache-tomcat-9.0.98.tar.gz
+--2024-12-12 14:13:38--  https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.98/bin/apache-tomcat-9.0.98.tar.gz
+Resolving dlcdn.apache.org (dlcdn.apache.org)... 151.101.2.132, 2a04:4e42::644
+Connecting to dlcdn.apache.org (dlcdn.apache.org)|151.101.2.132|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 12760610 (12M) [application/x-gzip]
+Saving to: ‘apache-tomcat-9.0.98.tar.gz’
+
+apache-tomcat-9.0.98.tar.gz            	100%[=====================================================================================>]  12.17M  2.32MB/s	in 5.1s    
+
+2024-12-12 14:13:44 (2.37 MB/s) - ‘apache-tomcat-9.0.98.tar.gz’ saved [12760610/12760610]
+
+ibtisam@lubuntu:/opt$ sudo tar -xvf apache-tomcat-9.0.98.tar.gz
+
+ibtisam@lubuntu:/opt$ ls
+apache-tomcat-9.0.98  apache-tomcat-9.0.98.tar.gz  containerd
+ibtisam@lubuntu:/opt$ cd apache-tomcat-9.0.98/
+ibtisam@lubuntu:/opt/apache-tomcat-9.0.98$ ls
+bin  BUILDING.txt  conf  CONTRIBUTING.md  lib  LICENSE  logs  NOTICE  README.md  RELEASE-NOTES  RUNNING.txt  temp  webapps  work
+ibtisam@lubuntu:/opt/apache-tomcat-9.0.98$ cd conf/
+-bash: cd: conf/: Permission denied
+ibtisam@lubuntu:/opt/apache-tomcat-9.0.98$ sudo cd conf/
+sudo: cd: command not found
+sudo: "cd" is a shell built-in command, it cannot be run directly.
+sudo: the -s option may be used to run a privileged shell.
+sudo: the -D option may be used to run a command in a specific directory.
+
+ibtisam@lubuntu:/opt/apache-tomcat-9.0.98$ sudo su
+root@lubuntu:/opt/apache-tomcat-9.0.98# ls
+bin  BUILDING.txt  conf  CONTRIBUTING.md  lib  LICENSE  logs  NOTICE  README.md  RELEASE-NOTES  RUNNING.txt  temp  webapps  work
+root@lubuntu:/opt/apache-tomcat-9.0.98# cd conf/
+root@lubuntu:/opt/apache-tomcat-9.0.98/conf# ls
+catalina.policy  	context.xml       	jaspic-providers.xsd  server.xml    	tomcat-users.xsd
+catalina.properties  jaspic-providers.xml  logging.properties	tomcat-users.xml  web.xml
+root@lubuntu:/opt/apache-tomcat-9.0.98/conf# vi tomcat-users.xml
+
+root@lubuntu:/opt/apache-tomcat-9.0.98/conf# cd ..
+root@lubuntu:/opt/apache-tomcat-9.0.98# cd webapps/
+root@lubuntu:/opt/apache-tomcat-9.0.98/webapps# ls
+docs  examples  host-manager  manager  ROOT
+root@lubuntu:/opt/apache-tomcat-9.0.98/webapps# cd manager/
+root@lubuntu:/opt/apache-tomcat-9.0.98/webapps/manager# ls
+css  images  index.jsp  META-INF  status.xsd  WEB-INF  xform.xsl
+root@lubuntu:/opt/apache-tomcat-9.0.98/webapps/manager# cd META-INF/
+root@lubuntu:/opt/apache-tomcat-9.0.98/webapps/manager/META-INF# ls
+context.xml
+root@lubuntu:/opt/apache-tomcat-9.0.98/webapps/manager/META-INF# vi context.xml
+root@lubuntu:/opt/apache-tomcat-9.0.98/webapps/manager/META-INF# pwd
+/opt/apache-tomcat-9.0.98/webapps/manager/META-INF
+
+root@lubuntu:/opt/apache-tomcat-9.0.98/webapps/manager/META-INF# cd ..
+root@lubuntu:/opt/apache-tomcat-9.0.98/webapps/manager# cd ..
+root@lubuntu:/opt/apache-tomcat-9.0.98/webapps# cd host-manager/
+root@lubuntu:/opt/apache-tomcat-9.0.98/webapps/host-manager# ls
+css  images  index.jsp  META-INF  WEB-INF
+root@lubuntu:/opt/apache-tomcat-9.0.98/webapps/host-manager# cd META-INF/
+root@lubuntu:/opt/apache-tomcat-9.0.98/webapps/host-manager/META-INF# ls
+context.xml
+root@lubuntu:/opt/apache-tomcat-9.0.98/webapps/host-manager/META-INF# pwd
+/opt/apache-tomcat-9.0.98/webapps/host-manager/META-INF
+root@lubuntu:/opt/apache-tomcat-9.0.98/webapps/host-manager/META-INF# vi context.xml
+
+root@lubuntu:/opt/apache-tomcat-9.0.98/webapps/host-manager/META-INF# sudo ln -s /opt/apache-tomcat-9.0.98/bin/startup.sh /usr/bin/startTomcat
+root@lubuntu:/opt/apache-tomcat-9.0.98/webapps/host-manager/META-INF# sudo ln -s /opt/apache-tomcat-9.0.98/bin/shutdown.sh /usr/bin/stopTomcat
+
+root@lubuntu:/opt/apache-tomcat-9.0.98/webapps/host-manager/META-INF# sudo stopTomcat
+Using CATALINA_BASE:   /opt/apache-tomcat-9.0.98
+Using CATALINA_HOME:   /opt/apache-tomcat-9.0.98
+Using CATALINA_TMPDIR: /opt/apache-tomcat-9.0.98/temp
+Using JRE_HOME:    	/usr
+Using CLASSPATH:   	/opt/apache-tomcat-9.0.98/bin/bootstrap.jar:/opt/apache-tomcat-9.0.98/bin/tomcat-juli.jar
+Using CATALINA_OPTS:   
+NOTE: Picked up JDK_JAVA_OPTIONS:  --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+Dec 12, 2024 2:59:05 PM org.apache.catalina.startup.Catalina stopServer
+SEVERE: Could not contact [localhost:8005] (base port [8005] and offset [0]). Tomcat may not be running.
+Dec 12, 2024 2:59:05 PM org.apache.catalina.startup.Catalina stopServer
+SEVERE: Error stopping Catalina
+java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:579)
+	at java.base/sun.nio.ch.Net.connect(Net.java:568)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at java.base/java.net.Socket.connect(Socket.java:583)
+	at java.base/java.net.Socket.<init>(Socket.java:507)
+	at java.base/java.net.Socket.<init>(Socket.java:287)
+	at org.apache.catalina.startup.Catalina.stopServer(Catalina.java:633)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.apache.catalina.startup.Bootstrap.stopServer(Bootstrap.java:393)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:478)
+
+root@lubuntu:/opt/apache-tomcat-9.0.98/webapps/host-manager/META-INF# sudo startTomcat
+Using CATALINA_BASE:   /opt/apache-tomcat-9.0.98
+Using CATALINA_HOME:   /opt/apache-tomcat-9.0.98
+Using CATALINA_TMPDIR: /opt/apache-tomcat-9.0.98/temp
+Using JRE_HOME:    	/usr
+Using CLASSPATH:   	/opt/apache-tomcat-9.0.98/bin/bootstrap.jar:/opt/apache-tomcat-9.0.98/bin/tomcat-juli.jar
+Using CATALINA_OPTS:   
+Tomcat started.
+
+root@lubuntu:/opt/apache-tomcat-9.0.98/webapps/host-manager/META-INF# cd ~
+root@lubuntu:~# cd /home/ibtisam/SilverOps/
+root@lubuntu:/home/ibtisam/SilverOps# ls
+'01. Workbooks'  '02. Cheat Sheets'  '03. Projects'   LICENSE   README.md
+root@lubuntu:/home/ibtisam/SilverOps# cd 03.\ Projects/00.\ LocalOps/0.1.05-war_Tomcat\ Sample/
+root@lubuntu:/home/ibtisam/SilverOps/03. Projects/00. LocalOps/0.1.05-war_Tomcat Sample# mvn package
+[INFO] Scanning for projects...
+[INFO] Packaging webapp
+[INFO] Assembling webapp [hello-world] in [/home/ibtisam/SilverOps/03. Projects/00. LocalOps/0.1.05-war_Tomcat Sample/target/hello-world]
+[INFO] Processing war project
+[INFO] Copying webapp resources [/home/ibtisam/SilverOps/03. Projects/00. LocalOps/0.1.05-war_Tomcat Sample/src/main/webapp]
+[INFO] Building war: /home/ibtisam/SilverOps/03. Projects/00. LocalOps/0.1.05-war_Tomcat Sample/target/hello-world.war
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:00 min
+[INFO] Finished at: 2024-12-12T15:09:22+05:00
+[INFO] ------------------------------------------------------------------------
+root@lubuntu:/home/ibtisam/SilverOps/03. Projects/00. LocalOps/0.1.05-war_Tomcat Sample#
+
+root@lubuntu:/home/ibtisam/SilverOps/03. Projects/00. LocalOps/0.1.05-war_Tomcat Sample# ls
+Banner.png  logo.png  pom.xml  README.md  src  target
+root@lubuntu:/home/ibtisam/SilverOps/03. Projects/00. LocalOps/0.1.05-war_Tomcat Sample# cd target/
+root@lubuntu:/home/ibtisam/SilverOps/03. Projects/00. LocalOps/0.1.05-war_Tomcat Sample/target# ls
+classes  generated-sources  generated-test-sources  hello-world  hello-world.war  maven-archiver  maven-status  surefire-reports  test-classes
+root@lubuntu:/home/ibtisam/SilverOps/03. Projects/00. LocalOps/0.1.05-war_Tomcat Sample/target# cp hello-world /opt/apache-tomcat-9.0.98/webapps/
+cp: -r not specified; omitting directory 'hello-world'
+root@lubuntu:/home/ibtisam/SilverOps/03. Projects/00. LocalOps/0.1.05-war_Tomcat Sample/target# cp hello-world /opt/apache-tomcat-9.0.98/webapps
+cp: -r not specified; omitting directory 'hello-world'
+root@lubuntu:/home/ibtisam/SilverOps/03. Projects/00. LocalOps/0.1.05-war_Tomcat Sample/target# cp -r hello-world /opt/apache-tomcat-9.0.98/webapps/
+root@lubuntu:/home/ibtisam/SilverOps/03. Projects/00. LocalOps/0.1.05-war_Tomcat Sample/target#
+
+localhost:8080/hello-world			hello-world=context path

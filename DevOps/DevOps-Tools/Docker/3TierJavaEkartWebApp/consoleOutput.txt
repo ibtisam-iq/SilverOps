@@ -1,0 +1,149 @@
+ibtisam@mint-dell:~/git/Agri2Ops/02.Projects/00.Build (LocalOps)/02-JavaEkartWebApp-3Tier$ tree -a
+.
+├── consoleOutput.txt
+├── .gitignore
+├── .mvn
+│   └── wrapper
+│       └── maven-wrapper.properties
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+├── README.md
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── com
+    │   │       └── reljicd
+    │   │           ├── config
+    │   │           │   ├── GlobalExceptionHandler.java
+    │   │           │   ├── MyAccessDeniedHandler.java
+    │   │           │   └── SpringSecurityConfig.java
+    │   │           ├── controller
+    │   │           │   ├── CustomErrorController.java
+    │   │           │   ├── HomeController.java
+    │   │           │   ├── LoginController.java
+    │   │           │   ├── RegistrationController.java
+    │   │           │   └── ShoppingCartController.java
+    │   │           ├── exception
+    │   │           │   └── NotEnoughProductsInStockException.java
+    │   │           ├── model
+    │   │           │   ├── Product.java
+    │   │           │   ├── Role.java
+    │   │           │   └── User.java
+    │   │           ├── repository
+    │   │           │   ├── ProductRepository.java
+    │   │           │   ├── RoleRepository.java
+    │   │           │   └── UserRepository.java
+    │   │           ├── service
+    │   │           │   ├── impl
+    │   │           │   │   ├── ProductServiceImpl.java
+    │   │           │   │   ├── ShoppingCartServiceImpl.java
+    │   │           │   │   └── UserServiceImp.java
+    │   │           │   ├── ProductService.java
+    │   │           │   ├── ShoppingCartService.java
+    │   │           │   └── UserService.java
+    │   │           ├── ShoppingCartApplication.java
+    │   │           └── util
+    │   │               └── Pager.java
+    │   └── resources
+    │       ├── application.properties
+    │       ├── sql
+    │       │   └── import-h2.sql
+    │       ├── static
+    │       │   └── css
+    │       │       └── main.css
+    │       └── templates
+    │           ├── 403.html
+    │           ├── error.html
+    │           ├── fragments
+    │           │   ├── footer.html
+    │           │   ├── header.html
+    │           │   ├── pagination.html
+    │           │   └── products.html
+    │           ├── home.html
+    │           ├── login.html
+    │           ├── registration.html
+    │           └── shoppingCart.html
+    └── test
+        └── java
+            └── com
+                └── reljicd
+                    └── ShoppingCartApplicationTests.java
+
+26 directories, 44 files
+
+--------------------------------------------------------------------------------------
+
+ibtisam@lubuntu:~/SilverOps/03. Projects/00. LocalOps/0.1.02-jar_Ekart$ ls -a
+.  ..  .gitignore  LICENSE  .mvn  pom.xml  README.md  scripts  src
+ibtisam@lubuntu:~/SilverOps/03. Projects/00. LocalOps/0.1.02-jar_Ekart$ mvn compile
+[INFO] Scanning for projects...
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 23 source files to /home/ibtisam/SilverOps/03. Projects/00. LocalOps/0.1.02-jar_Ekart/target/classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:45 min
+[INFO] Finished at: 2024-12-11T16:41:43+05:00
+[INFO] ------------------------------------------------------------------------
+ibtisam@lubuntu:~/SilverOps/03. Projects/00. LocalOps/0.1.02-jar_Ekart$
+
+ibtisam@lubuntu:~/SilverOps/03. Projects/00. LocalOps/0.1.02-jar_Ekart$ mvn test
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ---------------------< com.reljicd:shopping-cart >----------------------
+[INFO] Building shopping-cart 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+
+
+Results :
+
+Tests in error:
+  ShoppingCartApplicationTests.contextLoads » IllegalState Failed to load Applic...
+
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:10 min
+[INFO] Finished at: 2024-12-11T16:43:43+05:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.18.1:test (default-test) on project shopping-cart: There are test failures.
+[ERROR]
+[ERROR] Please refer to /home/ibtisam/SilverOps/03. Projects/00. LocalOps/0.1.02-jar_Ekart/target/surefire-reports for the individual test results.
+[ERROR] -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+ibtisam@lubuntu:~/SilverOps/03. Projects/00. LocalOps/0.1.02-jar_Ekart$
+
+ibtisam@lubuntu:~/SilverOps/03. Projects/00. LocalOps/0.1.02-jar_Ekart$ mvn package -DskipTests
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ---------------------< com.reljicd:shopping-cart >----------------------
+[INFO] Building shopping-cart 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] --- jacoco-maven-plugin:0.8.6:report (jacoco-site) @ shopping-cart ---
+[INFO] Loading execution data file /home/ibtisam/SilverOps/03. Projects/00. LocalOps/0.1.02-jar_Ekart/target/jacoco.exec
+[INFO] Analyzed bundle 'shopping-cart' with 17 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  48.689 s
+[INFO] Finished at: 2024-12-11T18:29:51+05:00
+[INFO] ------------------------------------------------------------------------
+ibtisam@lubuntu:~/SilverOps/03. Projects/00. LocalOps/0.1.02-jar_Ekart$
+
+ibtisam@lubuntu:~/SilverOps/03. Projects/00. LocalOps/0.1.02-jar_Ekart$ cd target/
+ibtisam@lubuntu:~/SilverOps/03. Projects/00. LocalOps/0.1.02-jar_Ekart/target$ ls -a
+.   classes        	generated-test-sources  maven-archiver  shopping-cart-0.0.1-SNAPSHOT.jar       	site          	test-classes
+..  generated-sources  jacoco.exec         	maven-status	shopping-cart-0.0.1-SNAPSHOT.jar.original  surefire-reports
+ibtisam@lubuntu:~/SilverOps/03. Projects/00. LocalOps/0.1.02-jar_Ekart/target$ java -jar shopping-cart-0.0.1-SNAPSHOT.jar
+
+
+
+

@@ -1,0 +1,33 @@
+pipeline{
+    agent any
+
+    tools {
+        nodejs 'nodejs23'
+    }
+
+    stages {
+        stage('Git Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/ibtisamops/Agri2Ops.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                dir('SonarQube/Nodejs-jest') {
+                    nodejs('nodejs23') {
+                        sh 'npm install'
+                    }    
+                }
+            }    
+        }
+        stage('Test') {
+            steps {
+                dir('SonarQube/Nodejs-jest') {
+                    nodejs('nodejs23') {
+                        sh 'npm run test' // test is the script name in package.json, that's it is written as npm `run` test
+                    }
+                }
+            }
+        }
+    }
+}

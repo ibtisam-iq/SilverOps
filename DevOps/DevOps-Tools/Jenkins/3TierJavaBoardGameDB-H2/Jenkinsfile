@@ -1,0 +1,52 @@
+pipeline {
+    agent any
+    
+    tools {
+        maven "maven3"
+    }
+
+    stages {
+        stage('Git Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/ibtisamops/Agri2Ops.git'
+            }    
+        }
+        
+        stage('Compile') {
+            steps {
+               dir('Jenkins/3TierJavaBoardGameDB-H2') {
+                    sh "mvn compile"
+               }
+            }
+        }
+        
+        stage('Test') {
+            steps {
+               dir('Jenkins/3TierJavaBoardGameDB-H2') {
+                    sh "mvn test"
+               }    
+            }
+        }
+        
+        stage('Package') {
+            steps {
+                dir('Jenkins/3TierJavaBoardGameDB-H2') {
+                    sh "mvn package"
+                }
+            }
+        }
+        
+        stage('Love') {
+            steps {
+                echo 'Love you, Sweetheart'
+            }
+        }
+    }
+
+    post {
+        always {
+            // Clean up the workspace after the build
+            cleanWs()
+        }
+    }
+}
