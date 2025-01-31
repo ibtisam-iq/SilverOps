@@ -38,6 +38,4 @@ For collaboration, inquiries, or discussions on DevOps and AI, reach out:
 <a href="https://linkedin.com/in/ibtisamops" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="https://www.linkedin.com/in/ibtisamops" height="30" width="40" /></a>
 </p>
 
-- **LinkedIn:** [Muhammad Ibtisam](https://www.linkedin.com/in/ibtisamops)
-
 Thank you for exploring **SilverOps**! Let's build the future of automation together! 🚀
