@@ -32,7 +32,6 @@ Parallel to **SilverOps**, I also maintain the [**Nectar**](https://github.com/i
 While **SilverOps** focuses on **practical implementations and case studies**, **Nectar** serves as a **reference for theoretical constructs and best practices**.
 
 ## 📬 Get in Touch
-For collaboration, inquiries, or discussions on DevOps and AI, reach out:
 
 <p align="left">
 <a href="https://linkedin.com/in/ibtisamops" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="https://www.linkedin.com/in/ibtisamops" height="30" width="40" /></a>
