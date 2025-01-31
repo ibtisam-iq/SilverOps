@@ -5,6 +5,7 @@
 ---
 ## 🎯 Purpose
 SilverOps serves as a structured collection of projects that highlight my hands-on experience and technical skill set. This repository is designed to:
+
 - Demonstrate **proficiency in DevOps and AI-powered automation**.
 - Organize projects into well-defined categories for easy navigation.
 - Act as a portfolio for potential employers, collaborators, and the DevOps community.
