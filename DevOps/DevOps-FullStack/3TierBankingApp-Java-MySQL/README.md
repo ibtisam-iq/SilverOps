@@ -1,2 +1,15 @@
-# 3TierBankingApp-Java-MySQL
-A Java-based banking application, follows a 3-tier architecture, and uses a MySQL database.
+
+# 3 Tier Spring Boot Bank App with MySQL
+
+## Database Configuration
+
+`src/main/resources/application.properties`
+
+
+## Project Structure
+
+Please refer to `consoleOutput.txt` for more details. 😊
+
+## Project Snapshot
+![Project Snapshot](./projectSnapshot.png)
+
