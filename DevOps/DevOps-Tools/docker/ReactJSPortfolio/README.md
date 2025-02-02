@@ -1,33 +1,16 @@
 # React.js Portfolio
 
-## Available Scripts
+This is a simple portfolio website built with React.js. It includes a home page, about page, projects page, and contact page. The website is responsive and looks good on both desktop and mobile devices. 
 
-In the project directory, you can run:
+## Complete README
 
-### `npm start`
+Please see the [README.md](https://github.com/ibtisamops/ReactJSPortfolio/blob/main/README.md) file for a detailed description of the project.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
 ## Project Structure
 
-Please refer to `consoleOutput.txt` for more details. 😊
+Please refer to [consoleOutput.txt](https://github.com/ibtisamops/ReactJSPortfolio/blob/main/consoleOutput.txt) for more details. 😊
 
-## Troubleshooting
 
-1. Open Developer Tools (`F12` or `Ctrl + Shift + I`).
-2. Go to the **Network** tab.
-3. Check the **Disable Cache** option.
-4. Perform a Hard Refresh (`Ctrl + Shift + R`).
+## Project Snapshot
+
