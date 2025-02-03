@@ -1,0 +1,36 @@
+# .dockerignore file is only relevant during the build context transfer. 
+
+# Ignore everything inside target/
+target/
+
+# But allow JAR files inside target/
+!target/*.jar
+
+# Ignore IDE/project-specific files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Ignore OS and system files
+.DS_Store
+Thumbs.db
+
+# Ignore Git-related files
+.git/
+.gitignore
+
+# Ignore logs and temp files
+logs/
+*.log
+tmp/
+*.tmp
+
+# Ignore dependencies (if using local repo)
+.m2/
+.gradle/
+
+# Ignore Docker-related files (except Dockerfile)
+.dockerignore
+docker-compose.override.yml
