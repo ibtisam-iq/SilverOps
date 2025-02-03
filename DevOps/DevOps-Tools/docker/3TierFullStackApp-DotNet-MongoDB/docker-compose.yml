@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   mongodb:
-    image: mongo:7.0
+    image: mongo
     container_name: mongodb
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
@@ -35,4 +35,3 @@ services:
 
 volumes:
   mongo-data:
-
