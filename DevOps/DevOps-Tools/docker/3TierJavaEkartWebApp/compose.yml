@@ -1,0 +1,11 @@
+services:
+  java-app:
+    build: .
+    container_name: java-container
+    ports:
+      - "8070:8070"
+    restart: unless-stopped
+    environment:
+      - JAVA_OPTS=-Xms256m -Xmx512m # Explicit Java memory limits improve stability.
+    command: ["java", "-jar", "/usr/src/app/app.jar"] # must be the correct path in the container
+

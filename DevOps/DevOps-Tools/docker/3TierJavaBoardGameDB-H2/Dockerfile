@@ -14,10 +14,13 @@ COPY . $APP_HOME
 
 # Build the application with Maven in the container
 # Excluded when building the image with CI/CD pipeline, as the application is already built in the pipeline.
-RUN mvn package
+RUN mvn package -DskipTests
 
 # Copy JAR file to final location
 COPY target/*.jar $APP_HOME/app.jar
+
+# Expose the application port
+EXPOSE 8080
 
 CMD ["java", "-jar", "$APP_HOME/app.jar"]
 
