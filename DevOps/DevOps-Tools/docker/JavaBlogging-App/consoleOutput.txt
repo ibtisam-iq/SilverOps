@@ -1,0 +1,80 @@
+ibtisam@mint-dell:~/git/Agri2Ops/03.Projects/00.Build (LocalOps)/03-Blogging-App-Java-3Tier$ ls -a
+.  ..  mvnw  mvnw.cmd  pom.xml  src
+
+It seems like the mvnw and mvnw.cmd files are present in your project, but the maven-wrapper.properties file is missing. 
+This file is essential for configuring the Maven Wrapper and specifying the version of Maven to use.
+
+
+ibtisam@mint-dell:~/git/Agri2Ops/03.Projects/00.Build (LocalOps)/03-Blogging-App-Java-3Tier$ mkdir -p .mvn/wrapper
+ibtisam@mint-dell:~/git/Agri2Ops/03.Projects/00.Build (LocalOps)/03-Blogging-App-Java-3Tier$ touch .mvn/wrapper/maven-wrapper.properties
+ibtisam@mint-dell:~/git/Agri2Ops/03.Projects/00.Build (LocalOps)/03-Blogging-App-Java-3Tier$ vi .mvn/wrapper/maven-wrapper.properties
+ibtisam@mint-dell:~/git/Agri2Ops/03.Projects/00.Build (LocalOps)/03-Blogging-App-Java-3Tier$ tree -a
+.
+├── .mvn
+│   └── wrapper
+│       └── maven-wrapper.properties
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── com
+    │   │       └── example
+    │   │           └── twitterapp
+    │   │               ├── config
+    │   │               │   ├── CustomUserDetails.java
+    │   │               │   ├── CustomUserDetailsService.java
+    │   │               │   └── SecurityConfig.java
+    │   │               ├── controller
+    │   │               │   ├── PostController.java
+    │   │               │   └── UserController.java
+    │   │               ├── model
+    │   │               │   ├── Post.java
+    │   │               │   └── User.java
+    │   │               ├── repository
+    │   │               │   ├── PostRepository.java
+    │   │               │   └── UserRepository.java
+    │   │               ├── service
+    │   │               │   ├── PostService.java
+    │   │               │   ├── UserServiceImpl.java
+    │   │               │   └── UserService.java
+    │   │               └── TwitterAppApplication.java
+    │   └── resources
+    │       ├── application.properties
+    │       ├── static
+    │       │   └── images
+    │       │       └── background.jpg
+    │       └── templates
+    │           ├── add.html
+    │           ├── home.html
+    │           ├── login.html
+    │           └── register.html
+    └── test
+        └── java
+            └── com
+                └── example
+                    └── twitterapp
+                        └── TwitterAppApplicationTests.java
+
+23 directories, 24 files
+
+
+------------------------------------------------------------------------------
+
+ibtisam@lubuntu:~/SilverOps/03. Projects/00. LocalOps/0.1.03-jar_FullStack-Blogging-App$ ls -a
+.  ..  mvnw  mvnw.cmd  pom.xml  src
+ibtisam@lubuntu:~/SilverOps/03. Projects/00. LocalOps/0.1.03-jar_FullStack-Blogging-App$ mvn package
+
+[INFO] Scanning for projects...
+[INFO] Replacing main artifact /home/ibtisam/SilverOps/03. Projects/00. LocalOps/0.1.03-jar_FullStack-Blogging-App/target/twitter-app-0.0.3.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /home/ibtisam/SilverOps/03. Projects/00. LocalOps/0.1.03-jar_FullStack-Blogging-App/target/twitter-app-0.0.3.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  03:00 min
+[INFO] Finished at: 2024-12-11T18:48:50+05:00
+[INFO] ------------------------------------------------------------------------
+ibtisam@lubuntu:~/SilverOps/03. Projects/00. LocalOps/0.1.03-jar_FullStack-Blogging-App$
+
+ibtisam@lubuntu:~/SilverOps/03. Projects/00. LocalOps/0.1.03-jar_FullStack-Blogging-App/target$ java -jar twitter-app-0.0.3.jar

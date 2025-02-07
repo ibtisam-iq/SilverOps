@@ -1,0 +1,22 @@
+# First Stage: Build the application
+FROM maven:3.9.9-eclipse-temurin-17-alpine AS builder
+
+WORKDIR /usr/src/app
+
+# Copy Maven project files and dependencies to speed up builds
+# Copy only pom.xml first (leverages Docker caching)
+COPY pom.xml .
+RUN mvn dependency:go-offline
+
+# Copy the source code and build the project
+# Copy the source code and build the JAR
+COPY src ./src
+RUN mvn package -DskipTests
+
+# Runtime Stage (Alpine)
+FROM openjdk:17-jdk-alpine
+WORKDIR /usr/src/app
+COPY --from=builder /usr/src/app/target/*.jar app.jar
+EXPOSE 8080
+CMD ["java", "-jar", "app.jar"]
+
