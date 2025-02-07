@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 services:
   web:
     build: .
@@ -6,6 +6,11 @@ services:
     command: java -jar /usr/src/app/app.jar # target/*.jar ; wrong path in the container
     ports:
       - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3  
 
 # NETWORK ID     NAME                              DRIVER    SCOPE
 # 496afd05355f   3tierjavaboardgamedb-h2_default   bridge    local
