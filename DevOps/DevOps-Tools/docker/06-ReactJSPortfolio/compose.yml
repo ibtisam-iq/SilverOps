@@ -1,0 +1,26 @@
+services:
+  portfolio:
+    image: react-portfolio
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - react-portfolio-network
+
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost || exit 1"] 
+      # The || exit 1 ensures failure is properly detected.
+      # The -fsS flags are used to prevent curl from showing progress bar and error messages.
+      # -fsS makes it silent but still fails on HTTP errors.
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+    restart: unless-stopped  
+  
+networks:
+   react-portfolio-network:
