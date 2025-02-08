@@ -1,9 +1,12 @@
 {
   "dependencies": {
-    "express": "*"
+    "express": "^4.18.2" 
   },
   "scripts": {
     "start": "node app.js"
+  },
+  "engines": {
+  "node": ">=18"
   },
   "name": "basic-nodejs",
   "version": "1.0.0",

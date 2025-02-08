@@ -1,0 +1,57 @@
+# Stage 1: Build the Express application
+FROM node:18-alpine AS build
+
+# Set environment variable for the application home directory
+ENV APP_HOME=/usr/src/app
+
+# Set the working directory inside the container
+WORKDIR $APP_HOME
+
+# Copy the package.json file to the working directory
+COPY package.json package-lock.json ./
+
+# Install the dependencies specified in package.json
+# RUN npm ci --only=production
+# npm ci is meant for clean installs, and it removes node_modules before installing.
+RUN npm install --omit=dev
+
+# Copy the rest of the application code to the working directory
+COPY . .
+
+# Build the React application for production
+# Note: This command may vary depending on the build script in your package.json file.  
+# Omit this step if you are not building a React application, as we are using Express.js in this example.  
+# RUN npm run build
+
+# Stage 2: Run the Express app in a smaller image
+FROM node:18-alpine
+
+# Set the working directory inside the container
+WORKDIR /usr/src/app
+
+# Create a non-root user
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
+# Copy dependencies and source code only **before switching users**
+COPY --from=build /usr/src/app ./
+COPY --from=build /usr/src/app/node_modules ./node_modules
+
+# Change ownership to appuser (to prevent permission issues)
+RUN chown -R appuser:appgroup /usr/src/app
+
+# Now switch to non-root user
+USER appuser
+
+# Expose port 3000 to allow traffic to the Node.js server
+EXPOSE 3000
+
+# Start the Node.js application
+CMD ["node", "app.js"]
+# OR CMD ["npm", "start"]
+
+
+# ---------
+# The build stage isn't actually required unless there's a compilation step.
+# If the app is pure Node.js with Express, there's no need for a multi-stage build.
+# However, if you keep it, only node_modules and source files need to be copied.
+  

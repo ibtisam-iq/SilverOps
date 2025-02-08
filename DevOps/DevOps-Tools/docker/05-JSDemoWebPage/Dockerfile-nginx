@@ -1,0 +1,31 @@
+FROM node:18-alpine
+
+# Set environment variables
+ENV NODE_ENV=production
+ENV APP_HOME=/usr/src/app
+
+# Set working directory
+WORKDIR $APP_HOME
+
+# Add a non-root user for security
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
+# Copy package.json first (for efficient caching)
+COPY package.json package-lock.json ./
+
+# Install dependencies (skip devDependencies)
+RUN npm install --omit=dev
+
+# Copy the rest of the files, but exclude node_modules
+COPY . .
+
+# Set permissions & switch to non-root user
+RUN chown -R appuser:appgroup $APP_HOME
+USER appuser
+
+# Expose API port
+EXPOSE 3000
+
+# Start the app
+CMD ["npm", "start"]
+

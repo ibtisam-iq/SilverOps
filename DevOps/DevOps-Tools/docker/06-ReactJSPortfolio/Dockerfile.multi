@@ -1,7 +1,7 @@
 # Stage 1: Build the React app
 
 # Use official Node.js image for building the app
-FROM node:18 AS build 
+FROM node:18-alpine AS build 
 
 # Set the working directory in the container
 WORKDIR /app
@@ -13,7 +13,9 @@ RUN npm install
 # Copy all files into the container
 COPY . .
 
-# Build the React app for production
+# Build the React application for production
+# This command is specific to Create React App projects and may vary for other projects. 
+# Note: This command may vary depending on the build script in your package.json file.  
 RUN npm run build
 
 # Stage 2: Serve the app with Nginx

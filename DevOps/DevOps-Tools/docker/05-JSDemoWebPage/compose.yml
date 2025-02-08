@@ -1,0 +1,34 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+    restart: unless-stopped
+    volumes:
+      # It bind-mounts the project directory (.) into the container, 
+      # but does not explicitly define a named volume for node_modules. 
+      # This means that the node_modules directory is not persisted between container restarts.
+      - .:/usr/src/app
+      
+      # To prevent conflicts between local and container dependencies, we use:
+      # - /usr/src/app/node_modules
+
+      # If we want to persist node_modules separately (outside the app directory), 
+      # we can define a named volume instead:
+      - node_modules:/usr/src/app/node_modules
+    networks:
+      - app-network
+
+networks:
+  app-network:
+
+volumes:
+  node_modules:
+    
+
+# # If you just need isolation and faster rebuilds, the bind-mount approach is fine.
+# If you want persistence (even after removing the container), use a named volume.
