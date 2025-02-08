@@ -1,0 +1,64 @@
+version: '3.8'  # Specifies the Docker Compose version for compatibility
+
+services:
+  web:
+    build: .  # Builds the Spring Boot application from the Dockerfile
+    container_name: bank-web  # Names the running container for easy identification
+    restart: unless-stopped  # Ensures the app restarts automatically unless manually stopped
+    ports:
+      - "8080:8080"  # Maps port 8080 on the container to port 8080 on the host machine
+
+    # Loads environment variables from a .env file (instead of hardcoding in this file)
+    env_file:
+      - .env
+
+    depends_on:
+      db:
+        condition: service_healthy  # Ensures MySQL container is healthy before starting the app
+        # ⚠️ NOTE: Even though MySQL is marked as healthy, it might still be initializing tables.
+        #          We fix this inside application.properties.
+
+    networks:
+      - app-network  # Attaches the web service to the custom-defined network
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]  
+      # ✅ Checks if the Spring Boot application is running by pinging its health endpoint
+      interval: 30s  # Runs the health check every 30 seconds
+      timeout: 10s   # Fails if there is no response within 10 seconds
+      retries: 3     # Retries 3 times before marking the service as unhealthy
+
+    entrypoint: ["./wait-for-it.sh", "db:3306", "--", "java", "-jar", "app.jar"]  
+      # ✅ Ensures MySQL is fully ready before launching the application  
+
+  db:
+    image: mysql:latest  # Uses the latest official MySQL image
+    container_name: mysql-db  # Assigns a name to the database container
+    restart: unless-stopped  # Ensures MySQL restarts unless manually stopped
+
+    # Loads environment variables from a .env file
+    env_file: 
+      - .env  
+
+    ports:
+      - "3306:3306"  # Exposes MySQL on port 3306
+
+    volumes:
+      - mysql_data:/var/lib/mysql  # ✅ Ensures MySQL data persists across container restarts
+
+    networks:
+      - app-network  # Attaches MySQL to the same network as the app
+
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p$MYSQL_ROOT_PASSWORD"]  
+      # ✅ Checks if MySQL is running and accepting connections
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  app-network:
+    driver: bridge  # Uses a bridge network to allow communication between services
+
+volumes:
+  mysql_data:  # Named volume for persisting MySQL database files
