@@ -40,8 +40,8 @@ services:
     env_file: 
       - .env  
 
-    ports:
-      - "3306:3306"  # Exposes MySQL on port 3306
+  # ports:
+  #   - "3306:3306"  # Never Expose MySQL, it is a security risk meri jaan 😘
 
     volumes:
       - mysql_data:/var/lib/mysql  # ✅ Ensures MySQL data persists across container restarts

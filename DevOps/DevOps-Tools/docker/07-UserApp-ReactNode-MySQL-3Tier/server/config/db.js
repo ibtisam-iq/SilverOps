@@ -1,15 +1,19 @@
+require('dotenv').config(); // Load environment variables from .env file
 const mysql = require('mysql');
 
+// Create a connection to the database using environment variables
 const db = mysql.createConnection({
+
   //host: 'localhost',
   //user: 'root',
   //password: 'IbtisamOps',
   //database: 'test_db'
 
-  host: process.env.DB_HOST || 'mysql',  // 'mysql' is the service name used in docker-compose.yml
-  user: process.env.DB_USER || 'root',       // MySQL user
-  password: process.env.DB_PASSWORD || 'IbtisamOps', // MySQL password
-  database: process.env.DB_NAME || 'test_db', // MySQL database name
+
+  host: process.env.DB_HOST,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  database: process.env.MYSQL_DATABASE,
 });
 
 db.connect(err => {
@@ -18,7 +22,13 @@ db.connect(err => {
     return;
   }
   console.log('Connected to the database.');
+
+  // Create database if it doesn't exist
+  db.query(`CREATE DATABASE IF NOT EXISTS test_db`, err => {
+    if (err) console.error('Database creation failed:', err.stack);
+  });
+
+  db.end(); // Close initial connection
 });
 
 module.exports = db;
-

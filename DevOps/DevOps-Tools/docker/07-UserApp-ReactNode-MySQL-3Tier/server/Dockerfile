@@ -13,7 +13,7 @@ COPY package.json package-lock.json ./
 # Install the dependencies specified in package.json
 # RUN npm ci --only=production
 # npm ci is meant for clean installs, and it removes node_modules before installing.
-RUN npm install --omit=dev
+RUN npm ci --omit=dev
 
 # Copy the rest of the application code to the working directory
 COPY . .
@@ -44,11 +44,15 @@ RUN chown -R appuser:appgroup /usr/src/app
 # Now switch to non-root user
 USER appuser
 
-# Expose port 3000 to allow traffic to the Node.js server
-EXPOSE 3000
+# Expose port 5000 to allow traffic to the Node.js server
+# See the port number in the server.js file
+EXPOSE 5000
 
 # Start the Node.js application
-CMD ["node", "app.js"]
+# Note: This command may vary depending on the start script in your package.json file.
+# Omit this step if you are not using a start script.
+# "start": "node server.js"
+CMD ["node", "server.js"]
 # OR CMD ["npm", "start"]
 
 
@@ -62,5 +66,4 @@ CMD ["node", "app.js"]
 # When the project contains a backend (e.g., Node.js + Express), then you need node_modules for the server to run.
 # In that case, you would:
 # 1) Copy node_modules from the builder stage.
-# 2) Use a Node.js base image in the final stage.    
-  
+# 2) Use a Node.js base image in the final stage. 

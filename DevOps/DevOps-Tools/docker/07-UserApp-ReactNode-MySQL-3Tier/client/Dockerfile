@@ -31,17 +31,20 @@ WORKDIR /usr/share/nginx/html
 # Remove the default Nginx files (optional)
 # Mandatory only, if using it as reverse proxy for other services
 # RUN rm -rf ./* && RUN rm -rf /etc/nginx/conf.d/default.conf && RUN rm -rf /etc/nginx/nginx.conf (wrong syntax)
-RUN rm -rf ./* /etc/nginx/conf.d/default.conf /etc/nginx/nginx.conf # (not necessary)
+# RUN rm -rf ./* /etc/nginx/conf.d/default.conf /etc/nginx/nginx.conf # (not necessary)
 
 # Copy the built app from the build stage to Nginx's public directory where it serves static content from by default
 # For a React frontend-only application served via Nginx, you do not need to copy `node_modules` from the build image.
-COPY --from=build /app/build .
+# See webpack's output path in your React app's configuration.
+# path: path.resolve(__dirname, 'public')
+COPY --from=build /app/public .
 
 # Custom Nginx configuration (fixes React routing issues)
+# Nginx missing React route handling (/api/* requests should go to server).
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Fix permissions
-RUN chown -R nginx:nginx /usr/share/nginx/html
+# Fix permissions (not necessary)
+# RUN chown -R nginx:nginx /usr/share/nginx/html
 
 # Expose port 80 for the app
 EXPOSE 80
@@ -59,3 +62,4 @@ CMD ["nginx", "-g", "daemon off;"]
 
 # Fix: Explicitly change ownership for Nginx:
 # RUN chown -R nginx:nginx /usr/share/nginx/html
+
