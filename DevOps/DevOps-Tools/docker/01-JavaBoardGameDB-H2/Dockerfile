@@ -14,7 +14,10 @@ COPY . $APP_HOME
 
 # Build the application with Maven in the container
 # Excluded when building the image with CI/CD pipeline, as the application is already built in the pipeline.
-RUN mvn package -DskipTests
+RUN mvn package -DskipTests || { echo 'Maven build failed'; exit 1; }
+
+# Add a debug step before the COPY command
+RUN ls -la /usr/src/app/target && sleep 300  # 5 minutes
 
 # Copy JAR file to final location
 COPY target/*.jar $APP_HOME/app.jar
@@ -24,3 +27,6 @@ EXPOSE 8080
 
 CMD ["java", "-jar", "$APP_HOME/app.jar"]
 
+
+# Error:
+# failed to solve: lstat /var/lib/docker/tmp/buildkit-mount940350498/target: no such file or director

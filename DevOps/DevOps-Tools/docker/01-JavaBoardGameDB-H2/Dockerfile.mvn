@@ -8,5 +8,14 @@ RUN mvn package -DskipTests
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "target/app.jar"]
+# CMD ["java", "-jar", "target/app.jar"] # wrong file path
+# CMD ["java", "-jar", "target/*.jar"] # path is right, but Docker does not interpret wildcards inside CMD like the shell does.
+# Solution 1) hardcode the exact JAR filename OR 2) entrypoint.sh OR 3) make the CMD run a shell script
+# RUN chmod +x entrypoint.sh
+# CMD [ "entrypoint.sh" ]
+CMD ["sh", "-c", "java -jar $(ls target/*.jar | head -n 1)"]
 
+
+# --------------------------------------------------------------------------------------
+#    REPOSITORY                    TAG                  IMAGE ID       CREATED          SIZE
+#    single-stage-build            latest               7de7322c5e69   3 minutes ago    487MB    

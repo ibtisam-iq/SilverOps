@@ -20,3 +20,8 @@ COPY --from=builder /usr/src/app/target/*.jar app.jar
 EXPOSE 8080
 CMD ["java", "-jar", "app.jar"]
 
+
+
+# --------------------------------------------------------------------------------------
+# REPOSITORY                    TAG                  IMAGE ID       CREATED          SIZE
+# multi-stage-build             latest               813bb4bfbf9a   32 seconds ago   374MB
