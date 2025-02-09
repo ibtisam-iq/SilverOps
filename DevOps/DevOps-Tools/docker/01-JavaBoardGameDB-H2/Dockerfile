@@ -1,6 +1,6 @@
 FROM openjdk:17-jdk-slim
 # LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format.
-ENV APP_HOME=/usr/src/app
+ENV APP_HOME=/usr/src/app 
 WORKDIR $APP_HOME
 
 # Install Maven 
