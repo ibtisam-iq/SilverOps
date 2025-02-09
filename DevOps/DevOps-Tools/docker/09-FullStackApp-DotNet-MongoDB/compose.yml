@@ -1,18 +1,19 @@
-version: '3.8'
-
 services:
-  mongodb:
-    image: mongo
+  db:
+    image: mongo:6.0
     container_name: mongodb
+    restart: always
+    env_file:
+      - .env
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASS}
     ports:
-      - "27017:27017"
+      - "27017:27017"  # Expose MongoDB for local development (remove in production)
     volumes:
       - mongo-data:/data/db
     healthcheck:
-      test: "echo 'db.stats()' | mongosh --host localhost:27017 --authenticationDatabase admin -u root -p example || exit 1"
+      test: ["CMD", "mongosh", "--eval", "db.runCommand('ping').ok"]
       interval: 10s
       retries: 5
       start_period: 30s
@@ -21,17 +22,20 @@ services:
   webapp:
     build: .
     container_name: dotnet-mongo-crud
-    ports:
-      - "8080:5035"  # Maps port 5035 in the container to port 8080 on the host
+    restart: always
     depends_on:
       mongodb:
         condition: service_healthy
+    env_file:
+      - .env
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      MongoDB__ConnectionString: "mongodb://root:example@mongodb:27017"
-      MongoDB__DatabaseName: "ProductDB"
+      MongoDB__ConnectionString: "mongodb://${MONGO_USER}:${MONGO_PASS}@db:27017"
+      MongoDB__DatabaseName: ${MONGO_DB}
+    ports:
+      - "5035:5035"  # Matches .NET default Kestrel port
     volumes:
-      - ./appsettings.json:/app/appsettings.json
+      - ./appsettings.json:/app/appsettings.json:ro  # Read-only for security
 
 volumes:
   mongo-data:
