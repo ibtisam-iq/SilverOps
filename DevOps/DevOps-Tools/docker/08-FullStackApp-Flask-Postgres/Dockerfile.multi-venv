@@ -25,9 +25,9 @@ FROM python:3.9-slim AS runtime
 
 WORKDIR /app
 
-# Copy only required files from builder stage
+# Copy virtual environment and application files
 COPY --from=builder /opt/ibtisam /opt/venv
-COPY . .
+COPY --from=builder /app /app
 
 # Use non-root user for security
 RUN useradd -m appuser
@@ -35,6 +35,12 @@ USER appuser
 
 # Expose Flask's default port
 EXPOSE 5000
+
+# Set environment variables for production
+ENV PATH="/opt/ibtisam/bin:$$PATH" \
+    FLASK_APP=app.py \
+    FLASK_ENV=production \
+    SQLALCHEMY_DATABASE_URI=postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@db/$POSTGRES_DB
 
 # Set the default command
 CMD ["/opt/ibtisam/bin/flask", "run", "--host=0.0.0.0"]

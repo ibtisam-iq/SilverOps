@@ -1,32 +1,31 @@
-version: '3'
-
 services:
   db:
     image: postgres:alpine
-    environment:
-      POSTGRES_USER: ibtisam
-      POSTGRES_PASSWORD: ibtisam
-      POSTGRES_DB: loveyou_ibtisam
-      # please check config and change the SQLALCHEMY_DATABASE_URI to your own database URI
-
+    restart: always
+    env_file:
+      - .env
     ports:
-      - "5432:5432"
+      - "5432:5432"  # Remove in production
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+    # Always use $$ inside CMD-SHELL in compose.yml to pass env variables correctly to the container shell. 
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 10s
+      retries: 5
 
   web:
     build: .
-    command: flask run --host=0.0.0.0
-    volumes:
-      - .:/app
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
     ports:
       - "5000:5000"
-    depends_on:
-      - db
-    environment:
-      FLASK_APP: app.py
-      FLASK_ENV: development
-      SQLALCHEMY_DATABASE_URI: postgresql://ibtisam:ibtisam@db/loveyou_ibtisam
-      
+    volumes:
+      - .:/app
+
 volumes:
   postgres_data:

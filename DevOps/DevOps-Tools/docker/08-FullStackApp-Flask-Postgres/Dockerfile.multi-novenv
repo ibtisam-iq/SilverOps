@@ -1,27 +1,24 @@
-# Use lightweight Python image
-FROM python:3.9-slim
+# Build Stage
+FROM python:3.9-slim AS builder
 
 WORKDIR /app
 
-# Set environment variables
-ENV PYTHONUNBUFFERED=1 \
-    PIP_NO_CACHE_DIR=1 \
-    PIP_DISABLE_PIP_VERSION_CHECK=1 \
-    PIP_ROOT_USER_ACTION=ignore
-
-# Install dependencies globally (not in a virtual environment)
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application code
+# Runtime Stage
+FROM python:3.9-slim AS runtime
+
+WORKDIR /app
+
+# Copy only necessary files from builder
+COPY --from=builder /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
 COPY . .
 
-# Use a non-root user for security
+# Use a non-root user
 RUN useradd -m appuser
 USER appuser
 
 EXPOSE 5000
 
-# Run the application
 CMD ["flask", "run", "--host=0.0.0.0"]
-
