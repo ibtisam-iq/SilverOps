@@ -20,6 +20,8 @@ Go to the root folder of the application and type:
 sudo apt-get install openjdk-8-jdk
 mvn package -DskipTests=true
 ```
+- It will take some time to be online.
+`http://localhost:3395/home`
 
 ## Complete README
 
@@ -29,3 +31,6 @@ Please see the [README.md](https://github.com/ibtisamops/3TierJavaEkartApp-H2/bl
 ## Project Structure
 
 Please refer to [consoleOutput.txt](https://github.com/ibtisamops/3TierJavaEkartApp-H2/blob/main/consoleOutput.txt) for more details. 😊
+
+## Project Snapshot
+![Project Snapshot](./projectSnapshot.png)

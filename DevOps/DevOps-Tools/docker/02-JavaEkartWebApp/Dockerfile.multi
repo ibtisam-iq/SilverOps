@@ -1,5 +1,5 @@
 # First Stage: Build the application
-FROM maven:3.9.9-eclipse-temurin-17-alpine AS builder
+FROM maven:3.9.9-eclipse-temurin-8-alpine AS builder
 
 WORKDIR /usr/src/app
 
@@ -14,13 +14,13 @@ COPY src ./src
 RUN mvn package -DskipTests
 
 # Second Stage: Run the application with a minimal image
-FROM openjdk:17-jdk-slim
+FROM openjdk:8-jdk-slim
 
 # Set the working directory
 WORKDIR /app
 
 # Expose the application port
-EXPOSE 8070
+EXPOSE 3395
 
 # Copy the JAR file from the builder stage
 COPY --from=builder /usr/src/app/target/*.jar app.jar

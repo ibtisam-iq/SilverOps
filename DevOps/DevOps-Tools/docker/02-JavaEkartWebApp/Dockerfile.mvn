@@ -1,4 +1,4 @@
-FROM maven:3.9.9-eclipse-temurin-17-alpine
+FROM maven:3.9.9-eclipse-temurin-8-alpine
 
 WORKDIR /usr/src/app
 
@@ -6,7 +6,15 @@ COPY . .
 
 RUN mvn package -DskipTests
 
-EXPOSE 8070
+EXPOSE 3395
 
-CMD ["java", "-jar", "target/app.jar"]
+# CMD ["java", "-jar", "target/app.jar"]
+CMD ["sh", "-c", "java -jar $(ls /usr/src/app/target/*.jar | head -n 1)"]
 
+
+
+
+
+# ------------------------------------------------
+# REPOSITORY                         TAG                  IMAGE ID       CREATED          SIZE
+# single-stage-with-maven-prebuilt   latest               51b2da9f42fd   8 minutes ago    329MB    
