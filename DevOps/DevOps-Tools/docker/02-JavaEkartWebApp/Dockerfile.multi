@@ -28,3 +28,7 @@ COPY --from=builder /usr/src/app/target/*.jar app.jar
 # Run the application
 CMD ["java", "-jar", "app.jar"]
 
+# ----------------------------------------------------
+
+# REPOSITORY                         TAG                  IMAGE ID       CREATED          SIZE
+# multi-stage-with-maven-prebuilt    latest               d43298c1175e   10 minutes ago   343MB    
