@@ -17,10 +17,16 @@ COPY . $APP_HOME
 RUN mvn package -DskipTests
 
 # Copy JAR file to final location
-COPY target/*.jar $APP_HOME/app.jar
+# COPY target/*.jar $APP_HOME/app.jar
 
 # Expose the application port
 EXPOSE 8080
 
-CMD ["java", "-jar", "$APP_HOME/app.jar"]
+# CMD ["java", "-jar", "$APP_HOME/app.jar"]
+CMD ["sh", "-c", "java -jar $(ls /usr/src/app/target/*.jar | head -n 1)"]
 
+
+# --------------------------------------------------------------------
+
+#  REPOSITORY                          TAG                  IMAGE ID       CREATED             SIZE
+#  single-build-blogapp-with-openjdk   latest               9c18bd4d3986   2 minutes ago       838MB   

@@ -3,8 +3,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    image: single-build-demowebpage
+    container_name: jsdemowebpage  
     ports:
-      - "3000:3000"
+      - "8081:8081"
     environment:
       NODE_ENV: production
     restart: unless-stopped
@@ -22,6 +24,20 @@ services:
       - node_modules:/usr/src/app/node_modules
     networks:
       - app-network
+  # All services should be mentioned in service section of the compose file.
+  # If you want to run a service without any dependencies, you can comment out the depends_on section.
+  # Error: depends_on is a service-level directive, but you’ve defined nginx inside volumes:, which is incorrect.
+  # volumes.nginx Additional property depends_on is not allowed
+  nginx:
+    image: nginx:alpine
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - app-network
 
 networks:
   app-network:
@@ -29,6 +45,24 @@ networks:
 volumes:
   node_modules:
     
-
-# # If you just need isolation and faster rebuilds, the bind-mount approach is fine.
+# If you just need isolation and faster rebuilds, the bind-mount approach is fine.
 # If you want persistence (even after removing the container), use a named volume.
+
+# To server the nginx as reverse proxy, you need to configure the nginx.conf file.
+# The nginx.conf file is mounted into the container at /etc/nginx/conf.d/default.conf.
+# To configure the reverse proxy, you need to add the following lines to the nginx.conf file:
+# server {
+#     listen 80;
+#     server_name localhost;
+#     location / {
+#         proxy_pass http://app:8081;
+#         proxy_http_version 1.1;
+#         proxy_set_header Upgrade $http_upgrade;
+#         proxy_set_header Connection 'upgrade';
+#         proxy_set_header Host $host;
+#         proxy_cache_bypass $http_upgrade;
+#     }
+#}
+
+# The proxy_pass directive tells Nginx to forward requests to the app service on port 8081. It means, the app service must be running on port 8081.
+

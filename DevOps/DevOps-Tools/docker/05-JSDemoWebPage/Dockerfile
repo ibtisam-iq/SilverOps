@@ -30,9 +30,12 @@ USER appuser
 
 # Expose application port
 # Expose API port to the nginx proxy server (if used)
-EXPOSE 3000
+EXPOSE 8081
 
 # Start the application
 CMD ["npm", "start"]
 
 
+# -------------------------------------------------------------------
+# REPOSITORY                                 TAG                  IMAGE ID       CREATED         SIZE
+# single-build-demowebpage                   latest               d423da2b1cfc   13 hours ago    133MB    

@@ -1,12 +1,11 @@
-version: '3.8'  # Specifies the Docker Compose version for compatibility
-
 services:
   web:
     build: .  # Builds the Spring Boot application from the Dockerfile
+    image: multi-stage-build-bankapp  # Names the built image
     container_name: bank-web  # Names the running container for easy identification
     restart: unless-stopped  # Ensures the app restarts automatically unless manually stopped
     ports:
-      - "8080:8080"  # Maps port 8080 on the container to port 8080 on the host machine
+      - "8000:8000"  # Maps port 8080 on the container to port 8080 on the host machine
 
     # Loads environment variables from a .env file (instead of hardcoding in this file)
     env_file:
@@ -28,11 +27,13 @@ services:
       timeout: 10s   # Fails if there is no response within 10 seconds
       retries: 3     # Retries 3 times before marking the service as unhealthy
 
-    entrypoint: ["./wait-for-it.sh", "db:3306", "--", "java", "-jar", "app.jar"]  
+    working_dir: /usr/src/app  # ✅ Sets the working directory inside the container for locating wait-for-it.sh  
+
+  # entrypoint: ["./wait-for-it.sh", "db:3306", "--", "java", "-jar", "app.jar"]  
       # ✅ Ensures MySQL is fully ready before launching the application  
 
   db:
-    image: mysql:latest  # Uses the latest official MySQL image
+    image: mysql:9  # Uses the latest official MySQL image
     container_name: mysql-db  # Assigns a name to the database container
     restart: unless-stopped  # Ensures MySQL restarts unless manually stopped
 
@@ -40,8 +41,8 @@ services:
     env_file: 
       - .env  
 
-  # ports:
-  #   - "3306:3306"  # Never Expose MySQL, it is a security risk meri jaan 😘
+    ports:
+      - "3306:3306"  # Never Expose MySQL, it is a security risk meri jaan 😘
 
     volumes:
       - mysql_data:/var/lib/mysql  # ✅ Ensures MySQL data persists across container restarts
