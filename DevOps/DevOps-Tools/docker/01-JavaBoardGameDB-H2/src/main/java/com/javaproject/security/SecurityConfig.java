@@ -84,7 +84,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("ibtisam")
                 .password(passwordEncoder.encode("123")).roles("USER")
                 .and()
-                .withUser("ibtisamops")
+                .withUser("ibtisam-iq")
                 .password(passwordEncoder.encode("12345")).roles("USER", "MANAGER");
     }
 }

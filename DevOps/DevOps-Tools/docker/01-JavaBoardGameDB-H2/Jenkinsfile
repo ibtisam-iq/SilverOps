@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/ibtisamops/3TierJavaBoardGameDB-H2.git'
+                git branch: 'main', url: 'https://github.com/ibtisam-iq/3TierJavaBoardGameDB-H2.git'
             }
         }
         

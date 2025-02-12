@@ -5,9 +5,9 @@ This is a simple Node.js application that uses Jest.js as the testing library. T
 
 ## Complete README
 
-Please see the [README.md](https://github.com/ibtisamops/Node.js-Jest/blob/main/README.md) file for a detailed description of the project.
+Please see the [README.md](https://github.com/ibtisam-iq/Node.js-Jest/blob/main/README.md) file for a detailed description of the project.
 
 
 ## Project Structure
 
-Please refer to [consoleOutput.txt](https://github.com/ibtisamops/Node.js-Jest/blob/main/consoleOutput.txt) for more details. 😊
+Please refer to [consoleOutput.txt](https://github.com/ibtisam-iq/Node.js-Jest/blob/main/consoleOutput.txt) for more details. 😊

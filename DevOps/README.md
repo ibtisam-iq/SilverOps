@@ -53,6 +53,6 @@ Each project within this folder has its own setup instructions. Please follow th
 DevOps is key to optimizing the software development lifecycle. The projects in this section demonstrate my expertise in automating tasks, ensuring continuous integration and delivery, and maintaining high system reliability and scalability.
 
 <p align="left">
-<a href="https://linkedin.com/in/ibtisamops" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="https://www.linkedin.com/in/ibtisamops" height="30" width="40" /></a>
+<a href="https://linkedin.com/in/ibtisam-iq" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="https://www.linkedin.com/in/ibtisam-iq" height="30" width="40" /></a>
 </p>
 

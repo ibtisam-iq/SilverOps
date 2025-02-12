@@ -23,7 +23,7 @@ Projects facilitating automation, CI/CD pipelines:
 Future research and implementation of **AI-powered automation**, focusing on predictive analytics, anomaly detection, and intelligent system monitoring.
 
 ## 3. Related Research: The Nectar Repository
-Parallel to **SilverOps**, I also maintain the [**Nectar**](https://github.com/ibtisamops/nectar) repository which is dedicated to **theoretical and empirical documentation**, including:
+Parallel to **SilverOps**, I also maintain the [**Nectar**](https://github.com/ibtisam-iq/nectar) repository which is dedicated to **theoretical and empirical documentation**, including:
 
 - **Comprehensive DevOps documentation** outlining best practices.
 - **Cheat sheets, guides, and in-depth tool analysis**.
@@ -34,7 +34,7 @@ While **SilverOps** focuses on **practical implementations and case studies**, *
 ## 📬 Get in Touch
 
 <p align="left">
-<a href="https://linkedin.com/in/ibtisamops" target="blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+<a href="https://linkedin.com/in/ibtisam-iq" target="blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
 </p>
 
 Thank you for exploring **SilverOps**! Let's build the future of automation together! 🚀

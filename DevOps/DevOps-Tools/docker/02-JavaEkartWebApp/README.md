@@ -33,12 +33,12 @@ single-stage-with-maven-prebuilt   latest               51b2da9f42fd   23 minute
 ```
 ## Complete README
 
-Please see the [README.md](https://github.com/ibtisamops/3TierJavaEkartApp-H2/blob/main/README.md) file for a detailed description of the project.
+Please see the [README.md](https://github.com/ibtisam-iq/3TierJavaEkartApp-H2/blob/main/README.md) file for a detailed description of the project.
 
 
 ## Project Structure
 
-Please refer to [consoleOutput.txt](https://github.com/ibtisamops/3TierJavaEkartApp-H2/blob/main/consoleOutput.txt) for more details. 😊
+Please refer to [consoleOutput.txt](https://github.com/ibtisam-iq/3TierJavaEkartApp-H2/blob/main/consoleOutput.txt) for more details. 😊
 
 ## Project Snapshot
 ![Project Snapshot](./projectSnapshot.png)

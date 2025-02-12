@@ -4,12 +4,12 @@ This is a simple portfolio website built with React.js. It includes a home page,
 
 ## Complete README
 
-Please see the [README.md](https://github.com/ibtisamops/ReactJSPortfolio/blob/main/README.md) file for a detailed description of the project.
+Please see the [README.md](https://github.com/ibtisam-iq/ReactJSPortfolio/blob/main/README.md) file for a detailed description of the project.
 
 
 ## Project Structure
 
-Please refer to [consoleOutput.txt](https://github.com/ibtisamops/ReactJSPortfolio/blob/main/consoleOutput.txt) for more details. 😊
+Please refer to [consoleOutput.txt](https://github.com/ibtisam-iq/ReactJSPortfolio/blob/main/consoleOutput.txt) for more details. 😊
 
 ## Docker Images
 

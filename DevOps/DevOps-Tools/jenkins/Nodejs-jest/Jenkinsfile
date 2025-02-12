@@ -8,7 +8,7 @@ pipeline{
     stages {
         stage('Git Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/ibtisamops/Agri2Ops.git'
+                git branch: 'main', url: 'https://github.com/ibtisam-iq/Agri2Ops.git'
             }
         }
         stage('Build') {

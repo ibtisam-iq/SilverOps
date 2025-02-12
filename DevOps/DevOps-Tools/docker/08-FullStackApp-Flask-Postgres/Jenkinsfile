@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/ibtisamops/3TierFullStackApp-Flask-Postgres.git'
+                git branch: 'main', url: 'https://github.com/ibtisam-iq/3TierFullStackApp-Flask-Postgres.git'
             }
         }
 

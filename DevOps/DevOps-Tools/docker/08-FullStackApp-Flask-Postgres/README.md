@@ -4,12 +4,12 @@ This project is a 3-tier web application built using Python for the backend, wit
 
 ## Complete README
 
-Please see the [README.md](https://github.com/ibtisamops/3TierFullStackApp-Flask-Postgres/blob/main/README.md) file for a detailed description of the project.
+Please see the [README.md](https://github.com/ibtisam-iq/3TierFullStackApp-Flask-Postgres/blob/main/README.md) file for a detailed description of the project.
 
 
 ## Project Structure
 
-Please refer to [consoleOutput.txt](https://github.com/ibtisamops/3TierFullStackApp-Flask-Postgres/blob/main/consoleOutput.txt) for more details. 😊
+Please refer to [consoleOutput.txt](https://github.com/ibtisam-iq/3TierFullStackApp-Flask-Postgres/blob/main/consoleOutput.txt) for more details. 😊
 
 ## Docker Image
 

@@ -12,17 +12,17 @@ This web application displays lists of board games and their reviews. While anyo
 3. Run the application
 4. To use initial user data, use the following credentials.
   - username: **ibtisam**      |     password: **123** (user role)
-  - username: **ibtisamops**   |     password: **12345**  (manager role)
+  - username: **ibtisam-iq**   |     password: **12345**  (manager role)
 5. You can also sign-up as a new user and customize your role to play with the application!
 
 ## Complete README
 
-Please see the [README.md](https://github.com/ibtisamops/3TierJavaBoardGameDB-H2/blob/main/README.md) file for a detailed description of the project.
+Please see the [README.md](https://github.com/ibtisam-iq/3TierJavaBoardGameDB-H2/blob/main/README.md) file for a detailed description of the project.
 
 
 ## Project Structure
 
-Please refer to [consoleOutput.txt](https://github.com/ibtisamops/3TierJavaBoardGameDB-H2/blob/main/consoleOutput.txt) for more details. 😊
+Please refer to [consoleOutput.txt](https://github.com/ibtisam-iq/3TierJavaBoardGameDB-H2/blob/main/consoleOutput.txt) for more details. 😊
 
 ## Project Snapshot
 ![Project Snapshot](./projectSnapshot.png)
