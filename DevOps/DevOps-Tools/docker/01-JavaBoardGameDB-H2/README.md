@@ -1,4 +1,4 @@
-# BoardGameDB-Java-3Tier-H2
+# BoardGameDB-Java-H2
 
 ## Description
 
@@ -17,7 +17,7 @@ This web application displays lists of board games and their reviews. While anyo
 
 ## Complete README
 
-Please see the [README.md](https://github.com/ibtisam-iq/3TierJavaBoardGameDB-H2/blob/main/README.md) file for a detailed description of the project.
+Please see the [README.md](https://github.com/ibtisam-iq/2TierJavaBoardGameDB-H2/blob/main/README.md) file for a detailed description of the project.
 
 
 ## Project Structure
