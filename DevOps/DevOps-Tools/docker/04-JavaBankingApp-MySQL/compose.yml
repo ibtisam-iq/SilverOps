@@ -10,6 +10,12 @@ services:
     # Loads environment variables from a .env file (instead of hardcoding in this file)
     env_file:
       - .env
+    #environment:
+      #- SPRING_DATASOURCE_URL=jdbc:$SPRING_DATASOURCE_URL
+      #- SPRING_DATASOURCE_USERNAME=$MYSQL_USER
+      #- SPRING_JPA_HIBERNATE_DDL_AUTO=$SPRING_JPA_HIBERNATE_DDL_AUTO  # Use env variables for other spring properties
+      #- SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=$SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
+      #- SPRING_JPA_SHOW_SQL=$SPRING_JPA_SHOW_SQL
 
     depends_on:
       db:
@@ -27,31 +33,36 @@ services:
       timeout: 10s   # Fails if there is no response within 10 seconds
       retries: 3     # Retries 3 times before marking the service as unhealthy
 
-    working_dir: /usr/src/app  # ✅ Sets the working directory inside the container for locating wait-for-it.sh  
+    #working_dir: /usr/src/app  # ✅ Sets the working directory inside the container for locating wait-for-it.sh  
 
   # entrypoint: ["./wait-for-it.sh", "db:3306", "--", "java", "-jar", "app.jar"]  
       # ✅ Ensures MySQL is fully ready before launching the application  
 
   db:
-    image: mysql:9  # Uses the latest official MySQL image
+    image: mysql:8  # Uses the latest official MySQL image
     container_name: mysql-db  # Assigns a name to the database container
     restart: unless-stopped  # Ensures MySQL restarts unless manually stopped
 
     # Loads environment variables from a .env file
     env_file: 
-      - .env  
-
+      - .env
+    #environment:
+        #MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD  # Sets the MySQL root password from the .env file
+        #MYSQL_DATABASE: $MYSQL_DATABASE  # Sets the MySQL database name from the .env file
+        #MYSQL_USER: $MYSQL_USER  # Sets the MySQL user from the .env file
+        #MYSQL_PASSWORD: $MYSQL_PASSWORD  # Sets the MySQL user password from the .env file
+        
     ports:
       - "3306:3306"  # Never Expose MySQL, it is a security risk meri jaan 😘
 
     volumes:
-      - mysql_data:/var/lib/mysql  # ✅ Ensures MySQL data persists across container restarts
+      - mysql_data_8:/var/lib/mysql  # ✅ Ensures MySQL data persists across container restarts
 
     networks:
       - app-network  # Attaches MySQL to the same network as the app
 
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p$MYSQL_ROOT_PASSWORD"]  
+      test: ["CMD", "mysqladmin", "ping", "-h", "db", "-uroot", "-p$MYSQL_ROOT_PASSWORD"]  
       # ✅ Checks if MySQL is running and accepting connections
       interval: 30s
       timeout: 10s
@@ -62,4 +73,4 @@ networks:
     driver: bridge  # Uses a bridge network to allow communication between services
 
 volumes:
-  mysql_data:  # Named volume for persisting MySQL database files
+  mysql_data_8:  # Named volume for persisting MySQL database files

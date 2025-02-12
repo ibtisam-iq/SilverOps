@@ -83,32 +83,41 @@ app.delete('/api/users/:id', (req, res) => {
 });
 
 /**
-There is no Nginx, Express is responsible for: 
-✅ Serving API routes (e.g., /api/users)
-✅ Handling API requests (receiving requests from frontend, responding directly)
-✅ Managing database interactions (e.g., CRUD operations)
-✅ Serving static files (e.g., index.html)
-✅ Handling errors and exceptions
-✅ Running the server
-✅ Listening to incoming requests
-✅ Sending responses to clients
-✅ Managing sessions
-✅ Handling cookies
-✅ Managing CORS (Cross-Origin Resource Sharing)
-✅ Parsing JSON requests
-✅ Parsing URL-encoded requests
-✅ Parsing multipart/form-data requests
-✅ Implementing security measures
-✅ Managing environment variables
-✅ Logging requests and responses
-✅ Implementing authentication and authorization
-✅ Implementing rate limiting
-✅ Implementing caching
-✅ Implementing compression
-✅ Implementing WebSockets
-✅ Implementing GraphQL
-✅ Implementing RESTful APIs
-*/
+ * 🚀 Serving API via Nginx (Recommended for Production)
+ *
+ * - Express should **only** handle API requests (`/api/*`).
+ * - The frontend (React) will be handled separately by Nginx.
+ * - Nginx will act as a **reverse proxy**, forwarding `/api/` requests to Express.
+ *
+ * 🔹 Example Nginx Configuration:
+ * ```
+ * server {
+ *   listen 80;
+ *   server_name example.com;
+ *
+ *   # Serve the React frontend (from /usr/share/nginx/html)
+ *   location / {
+ *     root /usr/share/nginx/html;
+ *     index index.html;
+ *     try_files $uri /index.html;
+ *   }
+ *
+ *   # Proxy API requests to the Express backend
+ *   location /api/ {
+ *     proxy_pass http://backend:5000/;
+ *     proxy_set_header Host $host;
+ *     proxy_set_header X-Real-IP $remote_addr;
+ *     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+ *   }
+ * }
+ * ```
+ *
+ * - The frontend should be **built** and placed in `/usr/share/nginx/html/`.
+ * - Nginx will serve all frontend requests (`/`).
+ * - Only API requests (`/api/*`) will be sent to the backend.
+ 
+
+// 🛑 Remove frontend serving from Express (since Nginx is handling it)
 
 // Serve static files from the client/public directory
 app.use(express.static(path.join(__dirname, '../client/public')));
@@ -118,7 +127,18 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public', 'index.html'));
 });
 
+*/
+
 // Start server
 app.listen(port, () => {
   console.log(`🚀 API Server is running at http://localhost:${port}`);
 });
+
+
+/**
+ 📝 Notes
+
+ In this setup:
+🚀 Express is completely free, just serves API routes (actual backend logic)
+✅ Nginx serves frontend as well as handles API requests (acts as a gateway). 
+ */

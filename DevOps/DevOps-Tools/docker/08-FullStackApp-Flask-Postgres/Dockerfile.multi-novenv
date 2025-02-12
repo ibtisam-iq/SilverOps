@@ -21,4 +21,10 @@ USER appuser
 
 EXPOSE 5000
 
-CMD ["flask", "run", "--host=0.0.0.0"]
+# CMD ["flask", "run", "--host=0.0.0.0"]
+CMD ["python", "-m", "flask", "run", "--host=0.0.0.0"]
+
+# ----------------------------------------------------------------
+
+# multi-build-no-venv               latest               74cfdb0808ff   7 minutes ago        171MB
+    

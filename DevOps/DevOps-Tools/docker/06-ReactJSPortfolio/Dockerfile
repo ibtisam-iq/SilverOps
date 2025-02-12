@@ -26,11 +26,18 @@ RUN apk add --no-cache nginx
 RUN rm -rf /etc/nginx/conf.d/default.conf
 
 # Copy the build output to the Nginx directory
-# RUN cp -r /app/build/* /var/www/html/
-RUN cp -r /app/build/* /usr/share/nginx/html/
+# RUN cp -r /app/build/* /var/www/html/ 
+# RUN cp -r /app/build/* /usr/share/nginx/html/ is invalid in Alpine-based images because Alpine uses /var/www/html
+RUN mkdir -p /usr/share/nginx/html && cp -r /app/build/* /usr/share/nginx/html/
 
 # Custom Nginx configuration (fixes React routing issues)
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Alpine expects it in http.d/ directory
+COPY nginx.conf /etc/nginx/http.d/default.conf  
+
+# COPY nginx.conf /etc/nginx/nginx.conf (main config file)
+
 
 # Set permissions and switch to non-root user
 RUN chown -R nginx:nginx /usr/share/nginx/html
@@ -53,3 +60,8 @@ CMD ["nginx", "-g", "daemon off;"]
 
 # Fix: Explicitly change ownership for Nginx:
 # RUN chown -R nginx:nginx /usr/share/nginx/html
+
+# -----------------------------------------------------------------------------
+#  REPOSITORY                                 TAG                  IMAGE ID       CREATED          SIZE
+#  react-portfolio-single-build               latest               dd696796092d   14 minutes ago   591MB
+   

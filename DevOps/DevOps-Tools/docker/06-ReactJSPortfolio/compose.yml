@@ -1,9 +1,9 @@
 services:
   portfolio:
-    image: react-portfolio
+    image: react-portfolio-multi-build
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.multi
     ports:
       - "80:80"
     environment:

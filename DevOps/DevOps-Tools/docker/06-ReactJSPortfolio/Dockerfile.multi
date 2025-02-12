@@ -30,8 +30,10 @@ WORKDIR /usr/share/nginx/html
 
 # Remove the default Nginx files (optional)
 # Mandatory only, if using it as reverse proxy for other services
-# RUN rm -rf ./* && RUN rm -rf /etc/nginx/conf.d/default.conf && RUN rm -rf /etc/nginx/nginx.conf (wrong syntax)
-RUN rm -rf ./* /etc/nginx/conf.d/default.conf /etc/nginx/nginx.conf # (not necessary)
+# RUN rm -rf ./* && RUN rm -rf /etc/nginx/conf.d/default.conf (wrong syntax)
+# Not necessary 
+# Never delete the main Nginx configuration file /etc/nginx/nginx.conf as it contains the global configuration settings.
+RUN rm -rf ./* /etc/nginx/conf.d/default.conf
 
 # Copy the built app from the build stage to Nginx's public directory where it serves static content from by default
 # For a React frontend-only application served via Nginx, you do not need to copy `node_modules` from the build image.
@@ -42,6 +44,9 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Fix permissions
 RUN chown -R nginx:nginx /usr/share/nginx/html
+
+# Use a non-root user for security
+USER nginx
 
 # Expose port 80 for the app
 EXPOSE 80

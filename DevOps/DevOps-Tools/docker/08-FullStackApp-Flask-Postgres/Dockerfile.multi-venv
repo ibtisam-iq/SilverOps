@@ -26,7 +26,7 @@ FROM python:3.9-slim AS runtime
 WORKDIR /app
 
 # Copy virtual environment and application files
-COPY --from=builder /opt/ibtisam /opt/venv
+COPY --from=builder /opt/ibtisam /opt/ibtisam
 COPY --from=builder /app /app
 
 # Use non-root user for security
@@ -37,11 +37,14 @@ USER appuser
 EXPOSE 5000
 
 # Set environment variables for production
-ENV PATH="/opt/ibtisam/bin:$$PATH" \
-    FLASK_APP=app.py \
-    FLASK_ENV=production \
-    SQLALCHEMY_DATABASE_URI=postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@db/$POSTGRES_DB
+# ENV PATH="/opt/ibtisam/bin:$PATH" \
+#    FLASK_APP=app.py \
+#    FLASK_ENV=production \
+#    SQLALCHEMY_DATABASE_URI=postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@db/$POSTGRES_DB
 
 # Set the default command
-CMD ["/opt/ibtisam/bin/flask", "run", "--host=0.0.0.0"]
+CMD ["/opt/ibtisam/bin/python", "-m", "flask", "run", "--host=0.0.0.0"]
 
+# ------------------------------------------------------------------
+    
+# multi-build-with-venv              latest               aae57dd7c04e   About a minute ago   172MB

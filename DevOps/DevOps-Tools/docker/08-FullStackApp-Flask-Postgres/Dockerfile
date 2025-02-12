@@ -18,3 +18,7 @@ EXPOSE 5000
 CMD ["flask", "run", "--host=0.0.0.0"]
 
 
+
+# --------------------------------------------------------------------
+
+# single-build-no-venv       latest               a57cb33534f9   29 minutes ago       165MB    

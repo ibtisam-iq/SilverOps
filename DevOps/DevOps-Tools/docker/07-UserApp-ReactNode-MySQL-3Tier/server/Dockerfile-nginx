@@ -4,7 +4,7 @@ FROM node:18-alpine AS build
 # Set environment variable for the application home directory
 ENV APP_HOME=/usr/src/app
 
-# Set the working directory inside the container for the build process
+# Set the working directory inside the container
 WORKDIR $APP_HOME
 
 # Copy the package.json file to the working directory
@@ -45,14 +45,14 @@ RUN chown -R appuser:appgroup /usr/src/app
 USER appuser
 
 # Expose port 5000 to allow traffic to the Node.js server
-# See the port number in the server.js file
+# See the port number in the server.nginx.js file
 EXPOSE 5000
 
 # Start the Node.js application
 # Note: This command may vary depending on the start script in your package.json file.
 # Omit this step if you are not using a start script.
-# "start": "node server.js"
-CMD ["node", "server.js"]
+# "start": "node server.nginx.js"
+CMD ["node", "server.nginx.js"]
 # OR CMD ["npm", "start"]
 
 
@@ -67,11 +67,3 @@ CMD ["node", "server.js"]
 # In that case, you would:
 # 1) Copy node_modules from the builder stage.
 # 2) Use a Node.js base image in the final stage. 
-
-
-# ----------------
-
-# 📝 Notes:
-# In this Dockerfile, or you can say in this setup:   
-# ✅ Express is completely free (only API logic)
-# ✅ Nginx serves frontend as well as handles API requests. 
