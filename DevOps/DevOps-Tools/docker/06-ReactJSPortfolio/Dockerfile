@@ -23,7 +23,7 @@ RUN npm run build
 RUN apk add --no-cache nginx
 
 # Remove the default Nginx files (optional)
-RUN rm -rf /etc/nginx/conf.d/default.conf
+RUN rm -rf /etc/nginx/http.d/default.conf
 
 # Copy the build output to the Nginx directory
 # RUN cp -r /app/build/* /var/www/html/ 
