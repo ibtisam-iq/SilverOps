@@ -1,8 +1,13 @@
 # Demo Web Page
 
-## Project Structure
+## Complete README
 
-Please refer to `consoleOutput.txt` for more details. 😊
+Please see the [README.md](https://github.com/ibtisam-iq/JSDemoWebPage/blob/main/README.md) file for a detailed description of the project.
+
+
+## Project Insights
+
+Please refer to [insights](https://github.com/ibtisam-iq/JSDemoWebPage/tree/main/insights) for more details. 😊
 
 ## Docker Images
 
