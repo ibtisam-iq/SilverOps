@@ -1,8 +1,8 @@
 # Demo Web Page
 
-## Complete README
+## Complete Project
 
-Please see the [README.md](https://github.com/ibtisam-iq/JSDemoWebPage/blob/main/README.md) file for a detailed description of the project.
+Please see the [Complete Project](https://github.com/ibtisam-iq/JSDemoWebPage/) for an in-depth analysis.
 
 
 ## Project Insights
