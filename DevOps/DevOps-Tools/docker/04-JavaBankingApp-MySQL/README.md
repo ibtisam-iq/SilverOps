@@ -3,9 +3,9 @@
 ## Overview
 This project is a Java-based banking application that follows a 2-tier architecture, utilizing a MySQL database.
 
-## Complete README
+## Complete Project
 
-Please see the [README.md](https://github.com/ibtisam-iq/BankingApp-Java-MySQL/blob/main/README.md) file for a detailed description of the project.
+Please see the [Complete Project](https://github.com/ibtisam-iq/BankingApp-Java-MySQL/blob/main/README.md) for in-depth analysis.
 
 ## Project Insights
 
