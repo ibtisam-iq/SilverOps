@@ -1,15 +1,15 @@
-# 3-Tier Python + PostgreSQL Application
+# 2-Tier Python + PostgreSQL Application
 
-This project is a 3-tier web application built using Python for the backend, with PostgreSQL as the database. The application consists of a presentation layer, a business logic layer, and a data access layer.
+This project is a 2-tier web application built using Python flask for the backend, with PostgreSQL as the database.
 
-## Complete README
+## Complete Project
 
-Please see the [README.md](https://github.com/ibtisam-iq/3TierFullStackApp-Flask-Postgres/blob/main/README.md) file for a detailed description of the project.
+Please see the [Complete Project](https://github.com/ibtisam-iq/FullStackApp-Flask-Postgres/) for in-depth details.
 
 
 ## Project Structure
 
-Please refer to [consoleOutput.txt](https://github.com/ibtisam-iq/3TierFullStackApp-Flask-Postgres/blob/main/consoleOutput.txt) for more details. 😊
+Please refer to [insights](https://github.com/ibtisam-iq/FullStackApp-Flask-Postgres/tree/main/insights) for more details. 😊
 
 ## Docker Image
 
