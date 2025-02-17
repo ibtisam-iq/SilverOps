@@ -1,8 +1,13 @@
-# 3 Tier Java Blogging Application 
+# Full Stack Java Blogging Application 
+
+## Complete README
+
+Please see the [README.md](https://github.com/ibtisam-iq/JavaBloggingApp-2Tier/blob/main/README.md) file for a detailed description of the project.
+
 
 ## Project Structure
 
-Please refer to `consoleOutput.txt` for more details. 😊
+Please refer to [consoleOutput.txt](https://github.com/ibtisam-iq/JavaBloggingApp-2Tier/blob/main/consoleOutput.txt) for more details. 😊
 
 ## Docker Images
 
