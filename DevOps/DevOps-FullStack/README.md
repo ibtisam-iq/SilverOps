@@ -56,6 +56,8 @@ This method automates deployment using Jenkins.
 - Create `plugins.txt` with the required plugins (e.g., Docker, Maven, etc.).
 
 ```bash
+#!/bin/bash
+
 # Setting Up Environment Variables
 export JEN_URL=http://localhost:8080/
 export JEN_USER=admin
@@ -65,22 +67,24 @@ export JEN_PASS=ibtisam
 wget $JEN_URL/jnlpJars/jenkins-cli.jar
 
 # Run the Jenkins CLI
-java -jar jenkins-cli.jar -s $JEN_URL/jnlpJars/jenkins-cli.jar
+java -jar jenkins-cli.jar -s $JEN_URL/jnlpJars/jenkins-cli.jar -auth $JEN_USER:$JEN_PASS
 
 # Install all plugins from the file
 while read plugin; do
     java -jar jenkins-cli.jar -s $JEN_URL -auth $JEN_USER:$JEN_PASS install-plugin $plugin
 done < plugins.txt
-systemctl restart jenkins
+sudo systemctl restart jenkins
 ```
 2. Configure necessary credentials in Jenkins.
-- Sonar & Webhook token with **secret text**
+- Sonar, Webhook and Kubernetes token with **secret text**
 - Github, Docker Hub and Nexus credentials with **Username with password**
 3. Configure tools: SonarQube, Maven, JDK and NodeJS etc.
-4. Configure global settings and paths: SonarQube server, Global Trusted Pipeline Libraries, etc.
+4. Configure global settings and paths: SonarQube server, Global Trusted Pipeline Libraries, Email server etc.
+- Set up a webhook in SonarQube Server for Quality Gate analysis.
 5. Config File Management: Global Maven settings.xml, .npmrc etc.
+- Update pom.xml for publishing artifact to Nexus.
 6. Configure Webhook Trigger for Jenkinsfile.
-7. Set up a webhook in SonarQube Server to send analysis results to Jenkins.
+7. 
 8. Use the provided **Jenkinsfile** for pipeline automation.
 9. Trigger a build to deploy the application.
 
